@@ -1,0 +1,13 @@
+<configure
+       xmlns="http://namespaces.zope.org/five"
+       xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:page
+       for="*"
+       name="subscribable_sections_view"
+       class=".views.SubscribableSections"
+       allowed_attributes="subscription_required check_came_from"
+       permission="zope2.View"
+       />
+
+</configure>

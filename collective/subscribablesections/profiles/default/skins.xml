@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+
+ <object name="subscribable_sections"
+    meta_type="Filesystem Directory View"
+    directory="collective.subscribablesections:skins/subscribable_sections" />
+
+ <skin-path name="*">
+  <layer name="subscribable_sections"
+     insert-after="custom"/>
+ </skin-path>
+
+</object>
