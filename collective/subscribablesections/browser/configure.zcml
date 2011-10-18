@@ -5,9 +5,17 @@
     <browser:page
        for="*"
        name="subscribable_sections_view"
-       class=".views.SubscribableSections"
+       class=".views.sections.SubscribableSectionsView"
        allowed_attributes="subscription_required check_came_from"
        permission="zope2.View"
+       />
+
+    <browser:page
+       for="collective.subscribablesections.interfaces.ISubscribableSection"
+       name="request_subscription"
+       class=".views.request.RequestSubscriptionForm"
+       template="views/templates/request_subscription.pt"
+       permission="zope2.Public"
        />
 
 </configure>

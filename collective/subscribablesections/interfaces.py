@@ -1,9 +1,13 @@
 from zope.interface import Interface
 
-class IClosedSection(Interface):
+class ISubscribableSection(Interface):
     """A folder that is marked as a "closed group".
     """
 
-class IOpenSection(Interface):
+class IClosedSection(ISubscribableSection):
+    """A folder that is marked as a "closed group".
+    """
+
+class IOpenSection(ISubscribableSection):
     """A folder that is marked as an "open group".
     """
