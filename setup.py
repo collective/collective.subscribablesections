@@ -26,6 +26,7 @@ setup(name='collective.subscribablesections',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'p4a.subtyper',
       ],
       entry_points="""
       # -*- Entry points: -*-

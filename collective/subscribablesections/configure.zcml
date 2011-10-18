@@ -7,6 +7,18 @@
 
   <five:registerPackage package="." initialize=".initialize" />
 
+  <include package="p4a.subtyper" />
+
+  <utility
+      name="collective.subscribablesections.closed_section"
+      factory=".subtypes.ClosedSectionDescriptor" 
+      />
+
+  <utility
+      name="collective.subscribablesections.open_section"
+      factory=".subtypes.OpenSectionDescriptor" 
+      />
+
   <genericsetup:registerProfile
       name="default"
       title="collective.subscribablesections"
