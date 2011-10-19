@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+  <portlet
+    addview="collective.subscribablesections.Sections"
+    title="Subscribable Sections"
+    description="A portlet which lists the subscribable sections in the site."
+    i18n:attributes="title title_sections_portlet;
+                     description description_sections_portlet">
+    <for interface="plone.app.portlets.interfaces.IColumn" />
+    <for interface="plone.app.portlets.interfaces.IDashboard" />
+  </portlet>
+</portlets>

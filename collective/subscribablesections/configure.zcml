@@ -11,6 +11,7 @@
   <cmf:registerDirectory name="subscribable_sections"/>
 
   <include package=".browser" />
+  <include package=".portlets" />
   <include package="p4a.subtyper" />
 
   <utility

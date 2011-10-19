@@ -1,0 +1,16 @@
+<configure
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.subscribablesections">
+
+    <include package="plone.app.portlets"/>
+
+    <plone:portlet
+        name="collective.subscribablesections.Sections"
+        interface=".sections.ISubscribableSectionsPortlet"
+        assignment=".sections.Assignment"
+        renderer=".sections.Renderer"
+        addview=".sections.AddForm"
+        />
+
+</configure>

@@ -28,9 +28,9 @@ functionality.
 
 My currents thoughts for solutions are:
 
-    1. solve by sticking an extra interface on a Folder, possibly use 
-       p4a.subtyper
-    2. create a view + portlet
+    1. Mark as Subscribable: solve by sticking an extra interface on a Folder, 
+       possibly use p4a.subtyper
+    2. List of Subscribable Sections: create a view + portlet
     3.  a. annotate on the folder
         b. create a portlet which lists subscription requests, view for 
            approving
