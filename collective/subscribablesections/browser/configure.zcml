@@ -4,7 +4,7 @@
 
     <browser:page
        for="*"
-       name="subscribable_sections_view"
+       name="subscribable-sections-view"
        class=".views.sections.SubscribableSectionsView"
        allowed_attributes="subscription_required check_came_from"
        permission="zope2.View"
@@ -12,10 +12,26 @@
 
     <browser:page
        for="collective.subscribablesections.interfaces.ISubscribableSection"
-       name="request_subscription"
-       class=".views.request.RequestSubscriptionForm"
-       template="views/templates/request_subscription.pt"
-       permission="zope2.Public"
+       name="request-subscription"
+       class=".views.request.RequestSubscription"
+       template="views/templates/request.pt"
+       permission="cmf.SetOwnPassword"
+       />
+
+    <browser:page
+       for="collective.subscribablesections.interfaces.ISubscribableSection"
+       name="manage-subscriptions"
+       class=".views.manage.ManageSubscriptions"
+       template="views/templates/manage.pt"
+       permission="zope2.ManageUsers"
+       />
+
+    <browser:page
+       for="*"
+       name="my-subscriptions"
+       class=".views.subscriptions.MySubscriptions"
+       template="views/templates/subscriptions.pt"
+       permission="cmf.SetOwnPassword"
        />
 
 </configure>

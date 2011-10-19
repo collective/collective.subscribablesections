@@ -26,9 +26,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="collective.subscribablesections"
+      title="Subscribable Sections"
       directory="profiles/default"
-      description="Installs the collective.subscribablesections package"
+      description="Allow Members to request access to private Plone Folders"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   

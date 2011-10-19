@@ -22,7 +22,7 @@ class SubscribableSectionsView(BrowserView):
             came_from = self.came_from
             portal_url = self.context.portal_url()
             relative_came_from = came_from.replace(portal_url, '').lstrip('/')
-            view_url = relative_came_from + '/@@subscribable_sections_view'
+            view_url = relative_came_from + '/@@subscribable-sections-view'
             view = self.context.unrestrictedTraverse(view_url)
             return view.subscription_required()
         return False

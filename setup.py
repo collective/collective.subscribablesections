@@ -5,7 +5,7 @@ version = '0.1-dvl'
 
 setup(name='collective.subscribablesections',
       version=version,
-      description="Use Plone folders as sections for which a subscription is necessary to view content. Subscription may be open, or protected by an approval step.",
+      description="Allow Members to request access to private Plone Folders.",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from

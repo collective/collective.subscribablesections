@@ -40,14 +40,14 @@ We have these User Stories:
 
     2. [V] List of Subscribable Sections: create a Portlet
 
-    3.  a. [ ] Request a subscription: Form View + Annotation storage on the 
+    3.  a. [V] Request a subscription: View + Annotation storage on the 
            Folder
 
         b. i.  [ ] List subscription requests in a Portlet
 
-           ii. [ ] Manage requests from View on Folder 
+           ii. [W] Manage requests from View on Folder 
 
-    4. [ ] List of Member's subscriptions: Portlet
+    4. [W ] List of Member's subscriptions: a View.
 
     5. [ ] Custom Workflow (one state, maybe change display name to 
            "Subscription required".
@@ -56,6 +56,8 @@ We have these User Stories:
            "Closed Section", display a different message. Link to subscription 
            request View.
 
+    7. [ ] Remove own subscription request.
+
 | [V]: done
 | [ ]: open
 | [W]: work in progress
@@ -63,12 +65,15 @@ We have these User Stories:
 Open sections
 -------------
 
-In addition, there is also a use case for "Open sections". These in the same
-way, but after a subscription request, subscription is granted immediately.
+In addition, there is also a use case for "Open sections". These work in the
+same way, except that after a subscription request, subscription is granted
+immediately.
 
 Issues
 ======
 
-- p4a.subtyper doesn't re-index the object after it alters its interfaces, so
-  the list of Subscribable Section Folders in the portlet isn't updated until 
-  someone changes the folders or updates the catalog.
+A list of issues per User Story:
+
+2. p4a.subtyper doesn't re-index the object after it alters its interfaces, so
+   the list of Subscribable Section Folders in the portlet isn't updated until 
+   someone changes the folders or updates the catalog.

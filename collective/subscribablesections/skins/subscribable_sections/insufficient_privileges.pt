@@ -12,7 +12,7 @@
 
   <div tal:omit-tag=""
       tal:define="
-        view nocall: context/@@subscribable_sections_view;
+        view nocall: context/@@subscribable-sections-view;
         subscription_required view/check_came_from;
         ">
 
@@ -40,7 +40,7 @@
         <span i18n:name="request_subscription">
           <a href="#"
               i18n:translate="label_request_subscription"
-              tal:attributes="href string:${view/closed_section_url}/request_subscription"
+              tal:attributes="href string:${view/closed_section_url}/request-subscription"
               >Request subscription</a>
         </span>
       </div>

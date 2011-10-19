@@ -1,16 +1,15 @@
-from plone.app.portlets.portlets import base
+from Acquisition import aq_inner
+
+from zope.component import getMultiAdapter
+from zope.formlib import form
 from zope.interface import implements
 
-from plone.portlets.interfaces import IPortletDataProvider
-from Products.CMFPlone import PloneMessageFactory as _
-
-from zope.formlib import form
-
+from plone.app.portlets.portlets import base
 from plone.memoize.instance import memoize
-from zope.component import getMultiAdapter
-from Acquisition import aq_inner
+from plone.portlets.interfaces import IPortletDataProvider
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+from collective.subscribablesections import MessageFactory as _
 from collective.subscribablesections.interfaces import ISubscribableSection
 
 class ISubscribableSectionsPortlet(IPortletDataProvider):

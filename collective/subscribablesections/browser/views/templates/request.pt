@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<metal:mike fill-slot="base"></metal:mike>
+<metal:mike fill-slot="top_slot"></metal:mike>
+<metal:mike fill-slot="head_slot"></metal:mike>
+<metal:mike fill-slot="style_slot"></metal:mike>
+<metal:mike fill-slot="javascript_head_slot"></metal:mike>
+<metal:mike fill-slot="column_one_slot"></metal:mike>
+<metal:mike fill-slot="column_two_slot"></metal:mike>
+
+<metal:main fill-slot="content">
+
+      I'd like a subscription, please.
+
+</metal:main>
+
+</body>
+</html>
