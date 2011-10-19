@@ -15,29 +15,14 @@ care of security, and it's easy to share the folder with a user (or group).
 
 What's missing for the use case is, in my opinion:
 
-    1. a way for Managers to mark certain folders as being a "closed section"
-    2. for Members, a list of subscribable "sections"
-    3.  a. a mechanism for users to request a "subscription"
-        b. a way for Managers to approve subscriptions
-    4. a list of users's "subscriptions"
-
-More may follow, of course.
+    - a way for Managers to mark certain folders as being a "closed section"
+    - for Members, a list of subscribable "sections"
+    - * a mechanism for users to request a "subscription"
+      * a way for Managers to approve subscriptions
+    - a list of users's "subscriptions"
 
 These are all fairly minor things, which should work easily with Plone's
 functionality.
-
-My currents thoughts for solutions are:
-
-    1. Mark as Subscribable: solve by sticking an extra interface on a Folder, 
-       possibly use p4a.subtyper
-    2. List of Subscribable Sections: create a view + portlet
-    3.  a. annotate on the folder
-        b. create a portlet which lists subscription requests, view for 
-           approving
-    4. portlet
-    5. perhaps a custom workflow
-    6. when trying to view a "Closed Section", display a message to request a
-       subscription
 
 It seems there's nothing around yet that works for Plone 4 (we're targeting
 4.2). I've looked at collective.groupspaces.* briefly, but it looks too big.
@@ -45,8 +30,45 @@ collective.groupspaces.content adds a content type (subclasses ATFolder), which
 i don't like. And it appears not to work for Plone 4, though i haven't tried
 installing it yet.
 
+Implementation
+--------------
+
+We have these User Stories:
+
+    1. [V] Mark as Subscribable: solve by sticking an extra interface on a
+       Folder, possibly use p4a.subtyper
+
+    2. [V] List of Subscribable Sections: create a Portlet
+
+    3.  a. [ ] Request a subscription: Form View + Annotation storage on the 
+           Folder
+
+        b. i.  [ ] List subscription requests in a Portlet
+
+           ii. [ ] Manage requests from View on Folder 
+
+    4. [ ] List of Member's subscriptions: Portlet
+
+    5. [ ] Custom Workflow (one state, maybe change display name to 
+           "Subscription required".
+
+    6. [V] Custom "Insufficient privileges" message: When trying to view a 
+           "Closed Section", display a different message. Link to subscription 
+           request View.
+
+| [V]: done
+| [ ]: open
+| [W]: work in progress
+
 Open sections
 -------------
 
 In addition, there is also a use case for "Open sections". These in the same
 way, but after a subscription request, subscription is granted immediately.
+
+Issues
+======
+
+- p4a.subtyper doesn't re-index the object after it alters its interfaces, so
+  the list of Subscribable Section Folders in the portlet isn't updated until 
+  someone changes the folders or updates the catalog.
