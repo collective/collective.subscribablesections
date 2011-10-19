@@ -7,19 +7,22 @@ class SubscribableSectionsView(BrowserView):
     """
     
     def check_came_from(self):
-        """Check if object requires a subscription to view.
-        Because we lost our original context during redirect, we get the
-        original object from the came_from value.
+        """Check if redirecting object requires a subscription to view.
+
+        Because this method is called from the context of 
+        /Plone/acl_users/credentials_cookie_auth, we compose the original
+        object's relative path from the came_from value and the portal_url. 
+
+        We then call this view's 'subscription_required' method on the original
+        object.
+
         """
         if self.request.has_key('came_from'):
             self.came_from = self.request['came_from']
-            came_from = self.came_from.split('/')
-            portal_url = self.context.portal_url().split('/')
-            # get relative path
-            while portal_url and came_from and came_from[0] == portal_url[0]:
-                came_from.pop(0)
-                portal_url.pop(0)
-            view_url = '/'.join(came_from) + '/@@subscribable_sections_view'
+            came_from = self.came_from
+            portal_url = self.context.portal_url()
+            relative_came_from = came_from.replace(portal_url, '').lstrip('/')
+            view_url = relative_came_from + '/@@subscribable_sections_view'
             view = self.context.unrestrictedTraverse(view_url)
             return view.subscription_required()
         return False
