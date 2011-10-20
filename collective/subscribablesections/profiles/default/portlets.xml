@@ -11,4 +11,15 @@
     <for interface="plone.app.portlets.interfaces.IColumn" />
     <for interface="plone.app.portlets.interfaces.IDashboard" />
   </portlet>
+
+  <assignment
+      type="collective.subscribablesections.Sections"
+      manager="plone.rightcolumn"
+      category="context"
+      key="/"
+      name="collective.subscribablesections.Sections"
+      insert-before="*"
+      >
+    </assignment>
+
 </portlets>

@@ -49,6 +49,10 @@ class SubscriptionsManager(object):
         roles_set = roles_set.union(set(['Reader']))
         roles_list = list(roles_set)
         self.context.manage_setLocalRoles(user_id, roles_list)
+        self.subscriptions.append({   
+            'user_id': user_id,
+            'subscription_date': DateTime(),
+        })
 
     def grantRequest(self, user_id):
         """Subscribe Member and remove subscription

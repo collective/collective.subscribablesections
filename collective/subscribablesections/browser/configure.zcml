@@ -6,7 +6,7 @@
        for="*"
        name="subscribable-sections-view"
        class=".views.sections.SubscribableSectionsView"
-       allowed_attributes="subscription_required check_came_from"
+       allowed_attributes="subscription_required check_came_from title description"
        permission="zope2.View"
        />
 

@@ -22,6 +22,8 @@ class SubscribableSectionsView(BrowserView):
             came_from = self.came_from
             portal_url = self.context.portal_url()
             relative_came_from = came_from.replace(portal_url, '').lstrip('/')
+            self.came_from_obj = self.context.unrestrictedTraverse(
+                relative_came_from)
             view_url = relative_came_from + '/@@subscribable-sections-view'
             view = self.context.unrestrictedTraverse(view_url)
             return view.subscription_required()
@@ -39,3 +41,9 @@ class SubscribableSectionsView(BrowserView):
         """Return the url of the Closed Section.
         """
         return self.came_from
+
+    def title(self):
+        return self.came_from_obj.Title()
+
+    def description(self):
+        return self.came_from_obj.Description()

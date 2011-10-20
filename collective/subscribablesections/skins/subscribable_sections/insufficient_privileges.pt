@@ -14,6 +14,8 @@
       tal:define="
         view nocall: context/@@subscribable-sections-view;
         subscription_required view/check_came_from;
+        title view/title;
+        description view/description;
         ">
 
     <div tal:omit-tag=""
@@ -32,10 +34,16 @@
     
     <div tal:omit-tag=""
         tal:condition="subscription_required">
-      <h1 class="documentFirstHeading"
-          i18n:translate="heading_subscription_required">Subscription required</h1>
+      <h1 class="documentFirstHeading" tal:content="view/title">[Title]</h1>
+      <div class="documentDescription" tal:content="view/description">
+        [Description]
+      </div>
+      <h2 i18n:translate="heading_subscription_required">
+        Subscription required
+      </h2>
 
-      <div class="documentDescription" i18n:translate="description_subscription_required">
+      <p class="" 
+          i18n:translate="description_subscription_required">
         This section requires that you subscribe in order to watch its contents.
         <span i18n:name="request_subscription">
           <a href="#"
@@ -43,7 +51,7 @@
               tal:attributes="href string:${view/closed_section_url}/request-subscription"
               >Request subscription</a>
         </span>
-      </div>
+      </p>
     </div>
 
   </div>

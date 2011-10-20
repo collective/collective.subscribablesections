@@ -30,8 +30,15 @@ collective.groupspaces.content adds a content type (subclasses ATFolder), which
 i don't like. And it appears not to work for Plone 4, though i haven't tried
 installing it yet.
 
-Implementation
---------------
+Open sections
+-------------
+
+In addition, there is also a use case for "Open sections". These work in the
+same way, except that after a subscription request, subscription is granted
+immediately.
+
+User Stories
+============
 
 We have these User Stories, and suggested implementations:
 
@@ -68,18 +75,48 @@ We have these User Stories, and suggested implementations:
 | [ ]: open
 | [W]: work in progress
 
-Open sections
--------------
+Getting started
+===============
 
-In addition, there is also a use case for "Open sections". These work in the
-same way, except that after a subscription request, subscription is granted
-immediately.
+After installation, you (The Manager) should see an extra button "Sub-types"
+(next to "Actions") on Folders. Here, you can mark the Folder as being an
+"Open" or "Closed" section. We will assume you create an Open Section first, in
+the site root. It will be Private by default, otherwise make it so. Note that
+the title and description will be exposed, to provide potential subscribers
+some information about what they're signing up for.
+
+    Change its title to "My Open Section" afterwards, or update the catalog
+    because of issue #1.
+
+After marking the Folder as a Subscribable Section in this manner, an extra tab
+"Subscriptions" appears (next to "Sharing"). Here you can view subscriptions
+and subscription requests for the Subscribable Section. 
+
+Also, you should see a portlet in the right column which shows your recently
+created "Open Section". The portlet was added when the product was installed,
+and only shows when there are Subscribable Sections. 
+
+A Member without any further privileges won't see the Open Section in the
+site's sections menu, but will see it in the portlet. Clicking it takes you to
+it. You'll be redirected to the Plone's `insufficient_privileges` form, which
+is patched to not display the "Insufficient Privileges" message, but which
+instead tells you that this is a Section for which a subscription is required,
+and there'll be a link to subscribe to the Section. The title and description
+of the Section will be visible, so you know what the Section is about..
+
+Clicking the subscription link on the Open Section will immediately grant you
+the Reader role on the Section. You'll be redirected to the default view of the
+Section, and a portal message will tell you your subscription was succesful.
+
+As the Manager, you will now see this member's subscription in the
+"Subscriptions" overview. You will also find the user has the "Reader" role
+under the Sharing tab.
 
 Issues
 ======
 
 A list of issues per User Story:
 
-2. p4a.subtyper doesn't re-index the object after it alters its interfaces, so
-   the list of Subscribable Section Folders in the portlet isn't updated until 
-   someone changes the folders or updates the catalog.
+1. (User Story #2) p4a.subtyper doesn't re-index the object after it alters its
+   interfaces, so the list of Subscribable Section Folders in the portlet isn't
+   updated until someone changes the folders or updates the catalog.
