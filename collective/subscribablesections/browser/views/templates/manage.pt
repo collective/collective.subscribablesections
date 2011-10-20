@@ -9,34 +9,82 @@
 <body>
 
   <metal:body fill-slot="body"
-      tal:define="show_border nothing">
+      tal:define="
+        show_border nothing;
+        ">
 
     <h1 class="documentFirstHeading">Manage subscriptions</h1>
 
-    <tal:defineRequests tal:define="items view/requests">
+    <tal:defineRequests 
+        tal:define="
+          items view/requests;
+          table python: {'id': 'requests', 'columns': [{'id': 'approve', 'name': 'Approve request'}, {'id': 'remove', 'name': 'Remove request'}]};
+          "
+        >
       <h2>Subscription requests</h2>
 
-      <table class="listing">
-        <tr tal:repeat="item items"
-            tal:attributes="class python:repeat['item'].odd" >
-          <td tal:content="item/user_id" />
-        </tr>
-      </table>
+      <form action="" tal:condition="items">
+
+        <metal:table define-macro="subscriptions_table">
+
+          <table class="listing">
+            <tr>
+              <th>User</th>
+              <th tal:repeat="column table/columns"
+                  tal:content="column/name">[What to do]</th>
+            </tr>
+            <tr tal:repeat="item items"
+                tal:attributes="class python:repeat['item'].odd" >
+              <td>
+                <a tal:content="item/user_id"
+                    tal:attributes="href string:${portal_url}/@@user-information?userid=${item/user_id}"
+                    >[user]</a>
+              </td>
+              <td class="listingCheckbox"
+                  tal:repeat="column table/columns">
+                <input type="checkbox" 
+                    tal:attributes="
+                      name string:users.id.${column/id}:records;
+                      value item/user_id;
+                      ">
+              </td>
+            </tr>
+          </table>
+
+        </metal:table>
+
+        <input type="submit" name="form.button.Modify" value="Change" />
+        <input type="Reset" value="Reset form" />
+
+      </form>
+
       <p tal:condition="not: items">
         No requests yet
       </p>
 
     </tal:defineRequests>
 
-    <tal:defineSubscriptions tal:define="items view/subscriptions">
+    <tal:defineSubscriptions
+        tal:define="
+          items view/subscriptions;
+          table python: {'id': 'subscriptions', 'columns': [{'id': 'remove', 'name': 'Remove subscription'}]};
+          "
+      >
       <h2>Subscriptions</h2>
-      <p tal:repeat="item items"
-          tal:content="item">
-        [the subscriptions list]
-      </p>
+
+      <form action="" tal:condition="items">
+
+        <metal:useTable metal:use-macro="template/macros/subscriptions_table" />
+
+        <input type="submit" name="form.button.Remove" value="Remove" />
+        <input type="Reset" value="Reset form" />
+
+      </form>
+
       <p tal:condition="not: items">
         No subscriptions yet
       </p>
+
     </tal:defineSubscriptions>
 
   </metal:body>
