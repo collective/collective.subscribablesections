@@ -37,7 +37,7 @@ class RequestSubscription(BrowserView):
             self.request.RESPONSE.redirect(self.context.absolute_url())
         else:
             if IClosedSection.providedBy(self.context):
-                message = self.manager.addRequest(member_id)
+                message = self.manager.addRequest(user_id)
                 self._addStatus(message)
                 redirect_url = self.context.portal_url() + '/@@my-subscriptions'
                 self.request.RESPONSE.redirect(redirect_url)
