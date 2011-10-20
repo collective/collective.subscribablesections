@@ -33,7 +33,7 @@ installing it yet.
 Implementation
 --------------
 
-We have these User Stories:
+We have these User Stories, and suggested implementations:
 
     1. [V] Mark as Subscribable: solve by sticking an extra interface on a
        Folder, possibly use p4a.subtyper
@@ -56,7 +56,11 @@ We have these User Stories:
            "Closed Section", display a different message. Link to subscription 
            request View.
 
-    7. [ ] Remove own subscription request.
+    7. a. [ ] Remove own subscription request:
+       b. [ ] Remove own subscription (protected by extra click):
+
+    8. [ ] Get view permission when subscription is granted: Grant Member a
+           the `Subscriber` Role on the Folder after subscription approval.
 
 | [V]: done
 | [ ]: open
