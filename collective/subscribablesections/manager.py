@@ -2,9 +2,9 @@ from DateTime import DateTime
 
 from zope.annotation.interfaces import IAnnotations
 
-from collective.subscribablesections import MessageFactory as _
-from collective.subscribablesections.config import REQUESTS_KEY, \
-                                                   SUBSCRIPTIONS_KEY
+from collective.subscribablesections.config import \
+    REQUESTS_KEY, SUBSCRIPTIONS_KEY, MESSAGE_REQUEST_EXISTS, \
+    MESSAGE_REQUEST_ADDED
 
 """Annotation storage for subscriptions on Folder items.
 
@@ -34,15 +34,14 @@ class SubscriptionsManager(object):
     def addRequest(self, user_id):
         if [ r for r in self.annotations[REQUESTS_KEY] if \
                                                     r['user_id'] == user_id]:
-            message = _(u'request_exists', 
-                        default = u'Subscription request exists for this user.')
+            message = MESSAGE_REQUEST_EXISTS
+
         else:
             self.annotations[REQUESTS_KEY].append(
                 {   'user_id': user_id,
                     'request_date': DateTime(),
                     }
             )
-            message =_(u'request_added', 
-                       default = u'Your subscription request was added.')
-        print(message) # XXX DEBUG
+            message = MESSAGE_REQUEST_ADDED
+
         return message
