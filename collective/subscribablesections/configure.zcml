@@ -12,13 +12,12 @@
 
   <include package=".browser" />
   <include package=".portlets" />
-  <include package="p4a.subtyper" />
 
+  <include package="p4a.subtyper" />
   <utility
       name="collective.subscribablesections.closed_section"
       factory=".subtypes.ClosedSectionDescriptor" 
       />
-
   <utility
       name="collective.subscribablesections.open_section"
       factory=".subtypes.OpenSectionDescriptor" 

@@ -30,9 +30,9 @@ class RequestSubscription(BrowserView):
         If the context is a Closed Section, send approval and redirect to
         "My Subscriptions" (where the request will show).
         """
-        member_id = self.context.portal_membership.getAuthenticatedMember().id
+        user_id = self.context.portal_membership.getAuthenticatedMember().id
         if IOpenSection.providedBy(self.context):
-            message = self.manager.immediatelySubscribeMember(member_id)
+            message = self.manager.immediatelySubscribeMember(user_id)
             self._addStatus(message)        
             self.request.RESPONSE.redirect(self.context.absolute_url())
         else:

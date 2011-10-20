@@ -48,7 +48,7 @@
         <span i18n:name="request_subscription">
           <a href="#"
               i18n:translate="label_request_subscription"
-              tal:attributes="href string:${view/closed_section_url}/request-subscription"
+              tal:attributes="href string:${view/closed_section_url}/@@request-subscription"
               >Request subscription</a>
         </span>
       </p>

@@ -10,7 +10,7 @@ class ManageSubscriptions(BrowserView):
         self.manager = SubscriptionsManager(self.context)
 
     def requests(self):
-        return self.manager.requests
+        return self.manager.getRequests()
 
     def subscriptions(self):
-        return self.manager.subscriptions
+        return self.manager.getSubscriptions()

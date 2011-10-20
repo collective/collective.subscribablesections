@@ -13,24 +13,28 @@
 
     <h1 class="documentFirstHeading">Manage subscriptions</h1>
 
-    <tal:defineRequests tal:define="requests view/requests">
+    <tal:defineRequests tal:define="items view/requests">
       <h2>Subscription requests</h2>
-      <p tal:repeat="request requests"
-          tal:content="request">
-        [the requests list]
-      </p>
-      <p tal:condition="not: requests">
+
+      <table class="listing">
+        <tr tal:repeat="item items"
+            tal:attributes="class python:repeat['item'].odd" >
+          <td tal:content="item/user_id" />
+        </tr>
+      </table>
+      <p tal:condition="not: items">
         No requests yet
       </p>
+
     </tal:defineRequests>
 
-    <tal:defineSubscriptions tal:define="subscriptions view/subscriptions">
+    <tal:defineSubscriptions tal:define="items view/subscriptions">
       <h2>Subscriptions</h2>
-      <p tal:repeat="subscription subscriptions"
-          tal:content="subscriptions">
+      <p tal:repeat="item items"
+          tal:content="item">
         [the subscriptions list]
       </p>
-      <p tal:condition="not: subscriptions">
+      <p tal:condition="not: items">
         No subscriptions yet
       </p>
     </tal:defineSubscriptions>

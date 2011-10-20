@@ -5,6 +5,7 @@ from zope.annotation.interfaces import IAnnotations
 from collective.subscribablesections.config import \
     REQUESTS_KEY, SUBSCRIPTIONS_KEY, MESSAGE_REQUEST_EXISTS, \
     MESSAGE_REQUEST_ADDED, MESSAGE_SUBSCRIPTION_GRANTED
+from collective.subscribablesections.interfaces import ISubscribableSection
 
 """Annotation storage for subscriptions on Folder items.
 
@@ -19,40 +20,51 @@ class SubscriptionsManager(object):
     """
 
     def __init__(self, context):
+        assert ISubscribableSection.providedBy(context) # XXX DEBUG
         self.context = context
-        self.annotations = IAnnotations(context)
-        if not self.annotations.has_key(REQUESTS_KEY):
-            self.annotations[REQUESTS_KEY] = []
-        if not self.annotations.has_key(SUBSCRIPTIONS_KEY):
-            self.annotations[SUBSCRIPTIONS_KEY] = []
-        self.requests = self.annotations[REQUESTS_KEY]
-        self.subscriptions = self.annotations[SUBSCRIPTIONS_KEY]
+
+    def getRequests(self):
+        return IAnnotations(self.context).get(REQUESTS_KEY, [])
+
+    def getSubscriptions(self):
+        return IAnnotations(self.context).get(SUBSCRIPTIONS_KEY, [])
 
     def addRequest(self, user_id):
-        if [ r for r in self.annotations[REQUESTS_KEY] if \
-                                                    r['user_id'] == user_id]:
+        requests = self.getRequests()
+        if [ r for r in requests if r['user_id'] == user_id]:
             message = MESSAGE_REQUEST_EXISTS
         else:
-            self.requests.append(
+            requests.append(
                 {   'user_id': user_id,
-                    'request_date': DateTime(),
+                    'date': DateTime(),
                     }
             )
             message = MESSAGE_REQUEST_ADDED
+            IAnnotations(self.context)[REQUESTS_KEY] = requests
         return message
 
     def _subscribeMember(self, user_id):
-        """Add the local role
+        """Add the local role, and keep track of subscription also in our
+        Annotation storage.
+
+        Before adding the subscription to the subscriptions list, we remove 
+        any existing entries for the user_id.
+
         """
         roles_tuple = self.context.get_local_roles_for_userid(user_id)
         roles_set = set(roles_tuple)
         roles_set = roles_set.union(set(['Reader']))
         roles_list = list(roles_set)
+
         self.context.manage_setLocalRoles(user_id, roles_list)
-        self.subscriptions.append({   
+        subscriptions = self.getSubscriptions()
+        # Remove possibly existing old entries
+        subscriptions = [s for s in subscriptions if s['user_id'] != user_id]
+        subscriptions.append({   
             'user_id': user_id,
-            'subscription_date': DateTime(),
+            'date': DateTime(),
         })
+        IAnnotations(self.context)[SUBSCRIPTIONS_KEY] = subscriptions
 
     def grantRequest(self, user_id):
         """Subscribe Member and remove subscription

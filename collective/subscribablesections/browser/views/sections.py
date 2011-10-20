@@ -38,12 +38,16 @@ class SubscribableSectionsView(BrowserView):
         return False
 
     def closed_section_url(self):
-        """Return the url of the Closed Section.
+        """Return the url of the Subscribable Section.
         """
         return self.came_from
 
     def title(self):
-        return self.came_from_obj.Title()
+        """Return the Subscribable Section's title.
+        """
+        title = self.came_from_obj.Title()
 
     def description(self):
+        """Return the Subscribable Section's description.
+        """
         return self.came_from_obj.Description()

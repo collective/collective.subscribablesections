@@ -23,7 +23,7 @@
        name="manage-subscriptions"
        class=".views.manage.ManageSubscriptions"
        template="views/templates/manage.pt"
-       permission="zope2.ManageUsers"
+       permission="cmf.ManagePortal"
        />
 
     <browser:page
