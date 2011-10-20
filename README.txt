@@ -59,8 +59,10 @@ We have these User Stories, and suggested implementations:
     7. a. [ ] Remove own subscription request:
        b. [ ] Remove own subscription (protected by extra click):
 
-    8. [ ] Get view permission when subscription is granted: Grant Member a
-           the `Subscriber` Role on the Folder after subscription approval.
+    8. [W] Get view permission when subscription is granted: Grant Member
+           the `Reader` Role on the Folder 
+           a. [ ] after subscription approval on a Closed Section
+           b. [V] immediately after request on an Open Section 
 
 | [V]: done
 | [ ]: open
