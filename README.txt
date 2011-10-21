@@ -78,6 +78,9 @@ We have these User Stories, and suggested implementations:
 Getting started
 ===============
 
+Marking a Folder as a Subscribable Section
+------------------------------------------
+
 After installation, you (The Manager) should see an extra button "Sub-types"
 (next to "Actions") on Folders. Here, you can mark the Folder as being an
 "Open" or "Closed" section. We will assume you create an Open Section first, in
@@ -96,6 +99,9 @@ Also, you should see a portlet in the right column which shows your recently
 created "Open Section". The portlet was added when the product was installed,
 and only shows when there are Subscribable Sections. 
 
+Subscribing to an Open Section
+------------------------------
+
 A Member without any further privileges won't see the Open Section in the
 site's sections menu, but will see it in the portlet. Clicking it takes you to
 it. You'll be redirected to the Plone's `insufficient_privileges` form, which
@@ -108,9 +114,38 @@ Clicking the subscription link on the Open Section will immediately grant you
 the Reader role on the Section. You'll be redirected to the default view of the
 Section, and a portal message will tell you your subscription was succesful.
 
+Viewing and removing subscriptions
+----------------------------------
+
 As the Manager, you will now see this member's subscription in the
 "Subscriptions" overview. You will also find the user has the "Reader" role
-under the Sharing tab.
+under the Sharing tab. 
+    
+    If there are members in the Sharing list that are not in the Subscribers
+    list, it means that they have not been added via this product. You can only
+    manage these members through Plone's Sharing form (and not via our "Manage
+    subscriptions" screen), because these members are not subscribers.
+
+In this form, you can check the box to remove the
+subscription. Submit the form, and you'll see the subscription has disappeared.
+If you look under "Sharing", you'll notice the Reader role has also been removed.
+
+Subscribing to a Closed Section
+-------------------------------
+
+This is similar to subscribing to an Open Section, but after subscribing you'll
+see a list of your subscriptions (TODO). The top of the screen shows a message which
+says that your subscription request has been added.
+
+Approving subscriptions
+-----------------------
+
+On the subscriptions management form of the Closed Section, the Manager will
+see a list of subscription requests. Checking the box in the "Approve" column
+and submitting the form will approve the request: You'll see a portal message
+saying the subscription was approved. You'll see the user has been moved from
+the "Requests" to the "Subscriptions" list. Looking at the "Sharing", you'll
+notice the user has been granted the Reader role.
 
 Issues
 ======

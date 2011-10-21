@@ -4,7 +4,9 @@ from zope.annotation.interfaces import IAnnotations
 
 from collective.subscribablesections.config import \
     REQUESTS_KEY, SUBSCRIPTIONS_KEY, MESSAGE_REQUEST_EXISTS, \
-    MESSAGE_REQUEST_ADDED, MESSAGE_SUBSCRIPTION_GRANTED
+    MESSAGE_REQUEST_ADDED, MESSAGE_SUBSCRIPTION_GRANTED, \
+    MESSAGE_SUBSCRIPTION_APPROVED, MESSAGE_SUBSCRIPTION_REMOVED, \
+    MESSAGE_REQUEST_REMOVED
 from collective.subscribablesections.interfaces import ISubscribableSection
 
 """Annotation storage for subscriptions on Folder items.
@@ -58,7 +60,6 @@ class SubscriptionsManager(object):
 
         self.context.manage_setLocalRoles(user_id, roles_list)
         subscriptions = self.getSubscriptions()
-        # Remove possibly existing old entries
         subscriptions = [s for s in subscriptions if s['user_id'] != user_id]
         subscriptions.append({   
             'user_id': user_id,
@@ -66,14 +67,54 @@ class SubscriptionsManager(object):
         })
         IAnnotations(self.context)[SUBSCRIPTIONS_KEY] = subscriptions
 
-    def grantRequest(self, user_id):
-        """Subscribe Member and remove subscription
+        # Remove request
+        self._removeRequest(user_id)
+
+    def _removeRequest(self, user_id):
+        """ Remove requests from requests list. Should not give an error if user_id is
+        not found.
+        """
+        requests = self.getRequests()
+        requests = [r for r in requests if r['user_id'] != user_id]
+        IAnnotations(self.context)[REQUESTS_KEY] = requests
+
+    def confirmSubscription(self, user_id):
+        """Confirm subscription to Closed Group, return message to Manager
+        """
+        self._subscribeMember(user_id)
+        return MESSAGE_SUBSCRIPTION_APPROVED
+
+    def immediatelySubscribeMember(self, user_id):
+        """Subscribe Member to Open Section, return message to Member
         """
         self._subscribeMember(user_id)
         return MESSAGE_SUBSCRIPTION_GRANTED
 
-    def immediatelySubscribeMember(self, user_id):
-        """Subscribe Member, nothing else.
+    def removeRequest(self, user_id):
+        """Remove request, return message
         """
-        self._subscribeMember(user_id)
-        return MESSAGE_SUBSCRIPTION_GRANTED
+        self._removeRequest(user_id)
+        return MESSAGE_REQUEST_REMOVED
+
+    def _removeSubscription(self, user_id):
+        """Remove subscription from list, remove Role.
+        """
+        roles_tuple = self.context.get_local_roles_for_userid(user_id)
+        roles_set = set(roles_tuple)
+        roles_set = roles_set - set(['Reader'])
+        roles_list = list(roles_set)
+        if roles_list:
+            self.context.manage_setLocalRoles(user_id, roles_list)
+        else:
+            self.context.manage_delLocalRoles([user_id])
+
+
+        subscriptions = self.getSubscriptions()
+        subscriptions = [s for s in subscriptions if s['user_id'] != user_id]
+        IAnnotations(self.context)[SUBSCRIPTIONS_KEY] = subscriptions
+
+    def removeSubscription(self, user_id):
+        """Remove subscription, return message
+        """
+        self._removeSubscription(user_id)
+        return MESSAGE_SUBSCRIPTION_REMOVED

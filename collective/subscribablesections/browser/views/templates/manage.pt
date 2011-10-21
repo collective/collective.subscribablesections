@@ -11,6 +11,8 @@
   <metal:body fill-slot="body"
       tal:define="
         show_border nothing;
+        table_data view/table_data;
+        form_results view/processForm;
         ">
 
     <h1 class="documentFirstHeading">Manage subscriptions</h1>
@@ -18,12 +20,12 @@
     <tal:defineRequests 
         tal:define="
           items view/requests;
-          table python: {'id': 'requests', 'columns': [{'id': 'approve', 'name': 'Approve request'}, {'id': 'remove', 'name': 'Remove request'}]};
+          table table_data/requests;
           "
         >
       <h2>Subscription requests</h2>
 
-      <form action="" tal:condition="items">
+      <form action="" method="POST" tal:condition="items">
 
         <metal:table define-macro="subscriptions_table">
 
@@ -44,7 +46,7 @@
                   tal:repeat="column table/columns">
                 <input type="checkbox" 
                     tal:attributes="
-                      name string:users.id.${column/id}:records;
+                      name string:users.id.${column/id}:list;
                       value item/user_id;
                       ">
               </td>
@@ -53,8 +55,10 @@
 
         </metal:table>
 
-        <input type="submit" name="form.button.Modify" value="Change" />
-        <input type="Reset" value="Reset form" />
+        <input type="submit" 
+            tal:attributes="name table/button_name" 
+            value="Submit" />
+        <input type="reset" value="Reset form" />
 
       </form>
 
@@ -67,16 +71,18 @@
     <tal:defineSubscriptions
         tal:define="
           items view/subscriptions;
-          table python: {'id': 'subscriptions', 'columns': [{'id': 'remove', 'name': 'Remove subscription'}]};
+          table table_data/subscriptions;
           "
       >
       <h2>Subscriptions</h2>
 
-      <form action="" tal:condition="items">
+      <form action="" method="POST" tal:condition="items">
 
         <metal:useTable metal:use-macro="template/macros/subscriptions_table" />
 
-        <input type="submit" name="form.button.Remove" value="Remove" />
+        <input type="submit" 
+            tal:attributes="name table/button_name" 
+            value="Remove" />
         <input type="Reset" value="Reset form" />
 
       </form>
