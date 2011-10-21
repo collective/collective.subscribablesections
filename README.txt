@@ -52,7 +52,7 @@ We have these User Stories, and suggested implementations:
 
         b. i.  [ ] List subscription requests in a Portlet
 
-           ii. [W] Manage requests from View on Folder 
+           ii. [V] Manage requests from View on Folder 
 
     4. [W ] List of Member's subscriptions: a View.
 
@@ -68,7 +68,7 @@ We have these User Stories, and suggested implementations:
 
     8. [W] Get view permission when subscription is granted: Grant Member
            the `Reader` Role on the Folder 
-           a. [ ] after subscription approval on a Closed Section
+           a. [V] after subscription approval on a Closed Section
            b. [V] immediately after request on an Open Section 
 
 | [V]: done
