@@ -126,9 +126,13 @@ under the Sharing tab.
     manage these members through Plone's Sharing form (and not via our "Manage
     subscriptions" screen), because these members are not subscribers.
 
-In this form, you can check the box to remove the
-subscription. Submit the form, and you'll see the subscription has disappeared.
-If you look under "Sharing", you'll notice the Reader role has also been removed.
+    If you revoke a subscriber's Reader role from the Sharing tab, the
+    subscriber will also not show up as a subscriber in the "Manage
+    subscriptions" screen anymore. 
+
+In this form, you can check the box to remove the subscription. Submit the
+form, and you'll see the subscription has disappeared.  If you look under
+"Sharing", you'll notice the Reader role has also been removed.
 
 Subscribing to a Closed Section
 -------------------------------

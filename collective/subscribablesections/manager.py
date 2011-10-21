@@ -29,7 +29,18 @@ class SubscriptionsManager(object):
         return IAnnotations(self.context).get(REQUESTS_KEY, [])
 
     def getSubscriptions(self):
-        return IAnnotations(self.context).get(SUBSCRIPTIONS_KEY, [])
+        """Get subscribers, return only subscribers that have local role "Reader"
+        """
+        subscribers = []
+        raw_subscribers = IAnnotations(self.context).get(SUBSCRIPTIONS_KEY, [])
+        for raw_subscriber in raw_subscribers:
+            user_id = raw_subscriber['user_id']
+            roles_and_permissions = self.context.manage_getUserRolesAndPermissions(
+                                                                            user_id)
+            local_roles = roles_and_permissions.get('roles_in_context', [])
+            if 'Reader' in local_roles:
+                subscribers.append(raw_subscriber)
+        return subscribers
 
     def addRequest(self, user_id):
         requests = self.getRequests()
