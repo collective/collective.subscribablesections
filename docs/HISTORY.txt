@@ -1,7 +1,10 @@
 Changelog
 =========
 
-0.1-dvldev (unreleased)
------------------------
+0.1a1 (unreleased)
+------------------
+
+0.1-dvl (2011-10-21)
+--------------------
 
 - Initial release
