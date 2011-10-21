@@ -54,7 +54,7 @@ We have these User Stories, and suggested implementations:
 
            ii. [V] Manage requests from View on Folder 
 
-    4. [W ] List of Member's subscriptions: a View.
+    4. [V] List of Member's subscriptions: a View.
 
     5. [ ] Custom Workflow (one state, maybe change display name to 
            "Subscription required".
@@ -66,7 +66,7 @@ We have these User Stories, and suggested implementations:
     7. a. [ ] Remove own subscription request:
        b. [ ] Remove own subscription (protected by extra click):
 
-    8. [W] Get view permission when subscription is granted: Grant Member
+    8. [V] Get view permission when subscription is granted: Grant Member
            the `Reader` Role on the Folder 
            a. [V] after subscription approval on a Closed Section
            b. [V] immediately after request on an Open Section 

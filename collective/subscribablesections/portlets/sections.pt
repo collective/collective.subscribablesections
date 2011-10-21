@@ -34,5 +34,16 @@
       </dd>
     </tal:items>
 
+    <dd class="portletFooter">
+        <a href="#"
+           class="tile"
+           tal:attributes="href string:${context/portal_url}/@@my-subscriptions"
+           i18n:translate="link_my_subscriptions">
+           View my subscriptions
+        </a>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
 </dl>
 </html>

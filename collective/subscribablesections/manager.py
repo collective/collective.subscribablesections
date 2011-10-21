@@ -129,3 +129,17 @@ class SubscriptionsManager(object):
         """
         self._removeSubscription(user_id)
         return MESSAGE_SUBSCRIPTION_REMOVED
+
+    def checkRequestForUser(self, user_id):
+        """Check if there is a request for the user
+        """
+        requests = self.getRequests()
+        requests = [r for r in requests if r['user_id'] == user_id]
+        return ( len(requests) > 0 )
+
+    def checkSubscriptionForUser(self, user_id):
+        """Check if there is a subscription for the user
+        """
+        subscriptions = self.getSubscriptions()
+        subscriptions = [r for r in subscriptions if r['user_id'] == user_id]
+        return ( len(subscriptions) > 0 )
