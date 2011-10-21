@@ -56,8 +56,8 @@ We have these User Stories, and suggested implementations:
 
     4. [V] List of Member's subscriptions: a View.
 
-    5. [ ] Custom Workflow (one state, maybe change display name to 
-           "Subscription required".
+    5. a. [ ] ??? Change display names for Open/Closed Sections
+       b. [ ] ??? Give Open/Closed Sections a one-state workflow
 
     6. [V] Custom "Insufficient privileges" message: When trying to view a 
            "Closed Section", display a different message. Link to subscription 
@@ -70,6 +70,8 @@ We have these User Stories, and suggested implementations:
            the `Reader` Role on the Folder 
            a. [V] after subscription approval on a Closed Section
            b. [V] immediately after request on an Open Section 
+
+    9. [ ] Support for delegating more than one Role
 
 | [V]: done
 | [ ]: open
@@ -159,3 +161,8 @@ A list of issues per User Story:
 1. (User Story #2) p4a.subtyper doesn't re-index the object after it alters its
    interfaces, so the list of Subscribable Section Folders in the portlet isn't
    updated until someone changes the folders or updates the catalog.
+
+Authors
+=======
+
+Kees Hink
