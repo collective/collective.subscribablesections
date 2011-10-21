@@ -138,7 +138,7 @@ Subscribing to a Closed Section
 -------------------------------
 
 This is similar to subscribing to an Open Section, but after subscribing you'll
-see a list of your subscriptions (TODO). The top of the screen shows a message which
+see a list of your subscriptions. The top of the screen shows a message which
 says that your subscription request has been added.
 
 Approving subscriptions
