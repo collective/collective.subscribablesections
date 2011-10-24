@@ -1,7 +1,10 @@
 Changelog
 =========
 
-0.1a1 (unreleased)
+0.1b1 (unreleased)
+------------------
+
+0.1a1 (2011-10-24)
 ------------------
 
 - Updated setup.py: url, author.

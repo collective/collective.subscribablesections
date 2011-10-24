@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1-a1'
+version = '0.1-b1'
 
 setup(name='collective.subscribablesections',
       version=version,
