@@ -4,7 +4,8 @@ Changelog
 0.1a1 (unreleased)
 ------------------
 
-- updated setup.py: url, author
+- Updated setup.py: url, author.
+- Check if user exists before including them in subscriptions/requests list.
 
 0.1-dvl (2011-10-21)
 --------------------

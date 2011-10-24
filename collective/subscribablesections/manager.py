@@ -1,6 +1,7 @@
 from DateTime import DateTime
-
 from zope.annotation.interfaces import IAnnotations
+
+from Products.CMFCore.utils import getToolByName
 
 from collective.subscribablesections.config import \
     REQUESTS_KEY, SUBSCRIPTIONS_KEY, MESSAGE_REQUEST_EXISTS, \
@@ -11,7 +12,7 @@ from collective.subscribablesections.interfaces import ISubscribableSection
 
 """Annotation storage for subscriptions on Folder items.
 
-We should take care not to define custom classes, as these will break when code
+We should take care not to store custom classes, as these will break when code
 is removed, making it harder to cleanly uninstall the product. So we only use
 Python's own classes (lists and dicts) and Zope's (DateTime).
 
@@ -24,21 +25,33 @@ class SubscriptionsManager(object):
     def __init__(self, context):
         assert ISubscribableSection.providedBy(context) # XXX DEBUG
         self.context = context
+        self.portal_membership = getToolByName(self.context,
+                                                        'portal_membership')
 
     def getRequests(self):
-        requests = IAnnotations(self.context).get(REQUESTS_KEY, [])
+        """Get requests, return only requests for subscribers that still exist.
+        """
+        requests = []
+        raw_requests = IAnnotations(self.context).get(REQUESTS_KEY, [])
+        for raw_request in raw_requests:
+            user_id = raw_request['user_id']
+            if not self.portal_membership.getMemberById(user_id):
+                continue
+            requests.append(raw_request) 
         return requests
 
     def getSubscriptions(self):
-        """Get subscribers, return only subscribers that have local role 
-        "Reader"
+        """Get subscribers, return only subscribers that still exist, and have 
+        local the role "Reader"
         """
         subscribers = []
         raw_subscribers = IAnnotations(self.context).get(SUBSCRIPTIONS_KEY, [])
         for raw_subscriber in raw_subscribers:
             user_id = raw_subscriber['user_id']
-            roles_and_permissions = self.context.manage_getUserRolesAndPermissions(
-                                                                            user_id)
+            if not self.portal_membership.getMemberById(user_id):
+                continue
+            roles_and_permissions = \
+                    self.context.manage_getUserRolesAndPermissions(user_id)
             local_roles = roles_and_permissions.get('roles_in_context', [])
             if 'Reader' in local_roles:
                 subscribers.append(raw_subscriber)
