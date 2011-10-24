@@ -14,8 +14,6 @@
       tal:define="
         view nocall: context/@@subscribable-sections-view;
         subscription_required view/check_came_from;
-        title view/title;
-        description view/description;
         ">
 
     <div tal:omit-tag=""
@@ -32,26 +30,30 @@
       </div>
     </div>
     
-    <div tal:omit-tag=""
-        tal:condition="subscription_required">
-      <h1 class="documentFirstHeading" tal:content="view/title">[Title]</h1>
-      <div class="documentDescription" tal:content="view/description">
-        [Description]
-      </div>
-      <h2 i18n:translate="heading_subscription_required">
-        Subscription required
-      </h2>
+    <div tal:omit-tag="" tal:condition="subscription_required">
+      <tal:defineInfo tal:define="
+          title view/title;
+          description view/description;
+          ">
+        <h1 class="documentFirstHeading" tal:content="view/title">[Title]</h1>
+        <div class="documentDescription" tal:content="view/description">
+          [Description]
+        </div>
+        <h2 i18n:translate="heading_subscription_required">
+          Subscription required
+        </h2>
 
-      <p class="" 
-          i18n:translate="description_subscription_required">
-        This section requires that you subscribe in order to watch its contents.
-        <span i18n:name="request_subscription">
-          <a href="#"
-              i18n:translate="label_request_subscription"
-              tal:attributes="href string:${view/closed_section_url}/@@request-subscription"
-              >Request subscription</a>
-        </span>
-      </p>
+        <p class="" 
+            i18n:translate="description_subscription_required">
+          This section requires that you subscribe in order to watch its contents.
+          <span i18n:name="request_subscription">
+            <a href="#"
+                i18n:translate="label_request_subscription"
+                tal:attributes="href string:${view/closed_section_url}/@@request-subscription"
+                >Request subscription</a>
+          </span>
+        </p>
+      </tal:defineInfo>
     </div>
 
   </div>
