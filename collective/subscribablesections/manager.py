@@ -28,6 +28,56 @@ class SubscriptionsManager(object):
         self.portal_membership = getToolByName(self.context,
                                                         'portal_membership')
 
+    def _subscribeMember(self, user_id):
+        """Add the local role, and keep track of subscription also in our
+        Annotation storage.
+
+        Before adding the subscription to the subscriptions list, we remove 
+        any existing entries for the user_id.
+
+        """
+        roles_tuple = self.context.get_local_roles_for_userid(user_id)
+        roles_set = set(roles_tuple)
+        roles_set = roles_set.union(set(['Reader']))
+        roles_list = list(roles_set)
+
+        self.context.manage_setLocalRoles(user_id, roles_list)
+        subscriptions = self.getSubscriptions()
+        subscriptions = [s for s in subscriptions if s['user_id'] != user_id]
+        subscriptions.append({   
+            'user_id': user_id,
+            'date': DateTime(),
+        })
+        IAnnotations(self.context)[SUBSCRIPTIONS_KEY] = subscriptions
+
+        # Remove request
+        self._removeRequest(user_id)
+
+    def _removeRequest(self, user_id):
+        """ Remove requests from requests list. Should not give an error if
+        user_id is not found. 
+        """
+        requests = self.getRequests()
+        requests = [r for r in requests if r['user_id'] != user_id]
+        IAnnotations(self.context)[REQUESTS_KEY] = requests
+
+    def _removeSubscription(self, user_id):
+        """Remove subscription from list, remove Role.
+        """
+        roles_tuple = self.context.get_local_roles_for_userid(user_id)
+        roles_set = set(roles_tuple)
+        roles_set = roles_set - set(['Reader'])
+        roles_list = list(roles_set)
+        if roles_list:
+            self.context.manage_setLocalRoles(user_id, roles_list)
+        else:
+            self.context.manage_delLocalRoles([user_id])
+
+
+        subscriptions = self.getSubscriptions()
+        subscriptions = [s for s in subscriptions if s['user_id'] != user_id]
+        IAnnotations(self.context)[SUBSCRIPTIONS_KEY] = subscriptions
+
     def getRequests(self):
         """Get requests, return only requests for subscribers that still exist.
         """
@@ -71,39 +121,6 @@ class SubscriptionsManager(object):
             IAnnotations(self.context)[REQUESTS_KEY] = requests
         return message
 
-    def _subscribeMember(self, user_id):
-        """Add the local role, and keep track of subscription also in our
-        Annotation storage.
-
-        Before adding the subscription to the subscriptions list, we remove 
-        any existing entries for the user_id.
-
-        """
-        roles_tuple = self.context.get_local_roles_for_userid(user_id)
-        roles_set = set(roles_tuple)
-        roles_set = roles_set.union(set(['Reader']))
-        roles_list = list(roles_set)
-
-        self.context.manage_setLocalRoles(user_id, roles_list)
-        subscriptions = self.getSubscriptions()
-        subscriptions = [s for s in subscriptions if s['user_id'] != user_id]
-        subscriptions.append({   
-            'user_id': user_id,
-            'date': DateTime(),
-        })
-        IAnnotations(self.context)[SUBSCRIPTIONS_KEY] = subscriptions
-
-        # Remove request
-        self._removeRequest(user_id)
-
-    def _removeRequest(self, user_id):
-        """ Remove requests from requests list. Should not give an error if
-        user_id is not found. 
-        """
-        requests = self.getRequests()
-        requests = [r for r in requests if r['user_id'] != user_id]
-        IAnnotations(self.context)[REQUESTS_KEY] = requests
-
     def confirmSubscription(self, user_id):
         """Confirm subscription to Closed Group, return message to Manager
         """
@@ -121,23 +138,6 @@ class SubscriptionsManager(object):
         """
         self._removeRequest(user_id)
         return MESSAGE_REQUEST_REMOVED
-
-    def _removeSubscription(self, user_id):
-        """Remove subscription from list, remove Role.
-        """
-        roles_tuple = self.context.get_local_roles_for_userid(user_id)
-        roles_set = set(roles_tuple)
-        roles_set = roles_set - set(['Reader'])
-        roles_list = list(roles_set)
-        if roles_list:
-            self.context.manage_setLocalRoles(user_id, roles_list)
-        else:
-            self.context.manage_delLocalRoles([user_id])
-
-
-        subscriptions = self.getSubscriptions()
-        subscriptions = [s for s in subscriptions if s['user_id'] != user_id]
-        IAnnotations(self.context)[SUBSCRIPTIONS_KEY] = subscriptions
 
     def removeSubscription(self, user_id):
         """Remove subscription, return message
