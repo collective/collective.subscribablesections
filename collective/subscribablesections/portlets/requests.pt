@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+<dl class="portlet portletSubscriptionRequests"
+    i18n:domain="collective.subscribablesections">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="view/title">[Portlet title]</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:repeat="request view/requests"
+        tal:define="
+           plone_view context/@@plone;
+           toLocalizedTime nocall:plone_view/toLocalizedTime;
+          ">
+
+      <dd class="portletItem"
+          tal:define="oddrow repeat/request/odd"
+          tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        <a tal:attributes="href string:${request/url}/@@manage-subscriptions">
+          <tal:title content="request/user_id">
+            [Username]
+          </tal:title>
+          <span tal:content="request/title">[section title]</span>
+          <span class="portletItemDetails"
+                tal:content="python:toLocalizedTime(request['date'])"
+                >May 5</span>
+        </a>
+      </dd>
+    </tal:items>
+
+</dl>
+</html>

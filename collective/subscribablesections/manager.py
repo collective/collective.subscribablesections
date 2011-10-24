@@ -26,10 +26,12 @@ class SubscriptionsManager(object):
         self.context = context
 
     def getRequests(self):
-        return IAnnotations(self.context).get(REQUESTS_KEY, [])
+        requests = IAnnotations(self.context).get(REQUESTS_KEY, [])
+        return requests
 
     def getSubscriptions(self):
-        """Get subscribers, return only subscribers that have local role "Reader"
+        """Get subscribers, return only subscribers that have local role 
+        "Reader"
         """
         subscribers = []
         raw_subscribers = IAnnotations(self.context).get(SUBSCRIPTIONS_KEY, [])
@@ -82,8 +84,8 @@ class SubscriptionsManager(object):
         self._removeRequest(user_id)
 
     def _removeRequest(self, user_id):
-        """ Remove requests from requests list. Should not give an error if user_id is
-        not found.
+        """ Remove requests from requests list. Should not give an error if
+        user_id is not found. 
         """
         requests = self.getRequests()
         requests = [r for r in requests if r['user_id'] != user_id]
@@ -143,3 +145,4 @@ class SubscriptionsManager(object):
         subscriptions = self.getSubscriptions()
         subscriptions = [r for r in subscriptions if r['user_id'] == user_id]
         return ( len(subscriptions) > 0 )
+

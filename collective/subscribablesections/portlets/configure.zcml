@@ -13,4 +13,12 @@
         addview=".sections.AddForm"
         />
 
+    <plone:portlet
+        name="collective.subscribablesections.Requests"
+        interface=".requests.ISubscribableRequestsPortlet"
+        assignment=".requests.Assignment"
+        renderer=".requests.Renderer"
+        addview=".requests.AddForm"
+        />
+
 </configure>

@@ -50,7 +50,7 @@ We have these User Stories, and suggested implementations:
     3.  a. [V] Request a subscription: View + Annotation storage on the 
            Folder
 
-        b. i.  [ ] List subscription requests in a Portlet
+        b. i.  [V] List subscription requests in a Portlet
 
            ii. [V] Manage requests from View on Folder 
 
@@ -142,6 +142,10 @@ Subscribing to a Closed Section
 This is similar to subscribing to an Open Section, but after subscribing you'll
 see a list of your subscriptions. The top of the screen shows a message which
 says that your subscription request has been added.
+
+As a manager, you will see this request in the "Subscription requests" portlet
+which was also added to the right column upon product installation. Clicking
+the link will take you to the Section's "Manage subscriptions" page.
 
 Approving subscriptions
 -----------------------
