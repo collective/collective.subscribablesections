@@ -1,0 +1,100 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-12-12 12:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./portlets/sections.py:27
+msgid "Add Subscribable Sections portlet"
+msgstr ""
+
+#: ./portlets/requests.py:29
+msgid "Add Subscription Requests portlet"
+msgstr ""
+
+#: ./portlets/sections.py:23
+msgid "Subscribable sections"
+msgstr ""
+
+#: ./portlets/requests.py:25
+msgid "Subscription requests"
+msgstr ""
+
+#: ./portlets/sections.py:28
+msgid "This portlet lists Subscribable Sections in the site."
+msgstr ""
+
+#: ./portlets/requests.py:30
+msgid "This portlet lists all requested subscriptions in the site."
+msgstr ""
+
+#. Default: "A portlet which lists the subscription requests in the site."
+#: ./profiles/default/portlets.xml
+msgid "description_requests_portlet"
+msgstr ""
+
+#. Default: "A portlet which lists the subscribable sections in the site."
+#: ./profiles/default/portlets.xml
+msgid "description_sections_portlet"
+msgstr ""
+
+#. Default: "View my subscriptions"
+#: ./portlets/sections.pt:38
+msgid "link_my_subscriptions"
+msgstr ""
+
+#. Default: "Form updated."
+#: ./config.py:25
+msgid "management_form_success"
+msgstr ""
+
+#. Default: "Your subscription request was added."
+#: ./config.py:11
+msgid "request_added"
+msgstr ""
+
+#. Default: "Subscription request exists for this user."
+#: ./config.py:7
+msgid "request_exists"
+msgstr ""
+
+#. Default: "Request removed."
+#: ./config.py:29
+msgid "request_removed"
+msgstr ""
+
+#. Default: "Subscription was granted."
+#: ./config.py:21
+msgid "subscription_granted"
+msgstr ""
+
+#. Default: "Subscription removed."
+#: ./config.py:33
+msgid "subscription_removed"
+msgstr ""
+
+#. Default: "You're subscribed."
+#: ./config.py:16
+msgid "subscription_success"
+msgstr ""
+
+#. Default: "Subscription requests"
+#: ./profiles/default/portlets.xml
+msgid "title_requests_portlet"
+msgstr ""
+
+#. Default: "Subscribable Sections"
+#: ./profiles/default/portlets.xml
+msgid "title_sections_portlet"
+msgstr ""
+

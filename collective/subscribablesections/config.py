@@ -13,7 +13,7 @@ MESSAGE_REQUEST_ADDED = (
     {'type':"info"} )
 # This message is displayed to the Member (on Open Sections, after automatic approval)
 MESSAGE_SUBSCRIPTION_GRANTED = (
-    _( u'subscription_granted', 
+    _( u'subscription_success', 
        default = u'You\'re subscribed.' ),
     {'type':"info"} )
 # This message is displayed to the Manager (on Closed Sections, after approval)
