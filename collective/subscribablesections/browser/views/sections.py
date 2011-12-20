@@ -1,3 +1,4 @@
+from Acquisition import aq_inner
 from Products.Five import BrowserView
 from collective.subscribablesections.interfaces import IClosedSection, \
                                                        IOpenSection
@@ -5,7 +6,25 @@ from collective.subscribablesections.interfaces import IClosedSection, \
 class SubscribableSectionsView(BrowserView):
     """Helper view class for subcribable sections.
     """
-    
+
+    def __init__(self, context, request):
+        """ Try to retrieve the object that's in the came_from attribute
+        """
+        super(SubscribableSectionsView, self)
+        self.context = context
+        self.request = request
+
+        self.came_from = self.request.get('came_from')
+        self.relative_came_from = None
+        self.came_from_obj = None
+
+        if self.came_from:
+            relative_came_from = self.came_from.replace(
+                context.portal_url(), '').lstrip('/')
+            self.came_from_obj = self.context.unrestrictedTraverse(
+                relative_came_from)
+
+
     def check_came_from(self):
         """Check if redirecting object requires a subscription to view.
 
@@ -17,25 +36,18 @@ class SubscribableSectionsView(BrowserView):
         object.
 
         """
-        if self.request.has_key('came_from'):
-            self.came_from = self.request['came_from']
-            came_from = self.came_from
-            portal_url = self.context.portal_url()
-            relative_came_from = came_from.replace(portal_url, '').lstrip('/')
-            self.came_from_obj = self.context.unrestrictedTraverse(
-                relative_came_from)
-            view_url = relative_came_from + '/@@subscribable-sections-view'
-            view = self.context.unrestrictedTraverse(view_url)
-            return view.subscription_required()
-        return False
-            
-    def subscription_required(self):
+        if self.came_from_obj:
+            return self.subscription_required(self.came_from_obj)
+
+    def subscription_required(self, context=None):
         """Check if object requires a subscription to view.
         """
+        if not context:
+            context = self.context
+
         for interface in [IClosedSection, IOpenSection]:
-            if interface.providedBy(self.context):
+            if interface.providedBy(context):
                 return True
-        return False
 
     def closed_section_url(self):
         """Return the url of the Subscribable Section.

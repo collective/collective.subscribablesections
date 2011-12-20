@@ -3,6 +3,11 @@ Changelog
 
 0.2dvl (unreleased)
 -------------------
+- Changed template fill-slot definitions to a more saner one [kcleong]
+- Use ZCatalog instead of portal_catalog.unrestrictedSearchResults, the
+  ZCatalog is really unrestricted. [kcleong]
+- Improved and simplified retrieving of came form object in section view [kcleong]
+
 
 0.1 (2011-11-21)
 ----------------

@@ -8,6 +8,7 @@ from plone.app.portlets.portlets import base
 from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.ZCatalog.ZCatalog import ZCatalog
 
 from collective.subscribablesections import MessageFactory as _
 from collective.subscribablesections.interfaces import ISubscribableSection
@@ -64,5 +65,7 @@ class Renderer(base.Renderer):
             'object_provides': ISubscribableSection.__identifier__,
             'sort_on' : 'sortable_title',
             }
-        results = self.catalog.unrestrictedSearchResults(**query)
-        return results
+
+        # Use ZCatalog so ALL results are found, this is even more
+        # unrestricted than portal_catalog.unrestrictedSearchResults
+        return ZCatalog.searchResults(self.catalog, None, **query)
