@@ -57,9 +57,11 @@ class SubscribableSectionsView(BrowserView):
     def title(self):
         """Return the Subscribable Section's title.
         """
-        title = self.came_from_obj.Title()
+        if self.came_from_obj:
+            return self.came_from_obj.Title()
 
     def description(self):
         """Return the Subscribable Section's description.
         """
-        return self.came_from_obj.Description()
+        if self.came_from_obj:
+            return self.came_from_obj.Description()
