@@ -12,8 +12,8 @@
 
   <include package=".browser" />
   <include package=".portlets" />
-
   <include package="p4a.subtyper" />
+
   <utility
       name="collective.subscribablesections.closed_section"
       factory=".subtypes.ClosedSectionDescriptor" 
@@ -22,6 +22,10 @@
       name="collective.subscribablesections.open_section"
       factory=".subtypes.OpenSectionDescriptor" 
       />
+
+  <subscriber
+      for="p4a.subtyper.interfaces.ISubtypeEvent"
+      handler=".events.reindex_object" />
 
   <genericsetup:registerProfile
       name="default"

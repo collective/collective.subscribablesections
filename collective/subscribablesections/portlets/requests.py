@@ -72,7 +72,6 @@ class Renderer(base.Renderer):
             return -1
         return 0
         
-    @memoize
     def _data(self):
         """Returns a list of all pending subscription requests, adding the URL,
         description and title of the Section they're for.
@@ -94,5 +93,8 @@ class Renderer(base.Renderer):
                     r['description'] = brain.Description
                     r['url'] = brain.getURL()
                     all_requests.append(r)
-        all_requests.sort(self._compareRequestDates) 
+
+        if all_requests:
+            all_requests.sort(self._compareRequestDates)
+
         return all_requests

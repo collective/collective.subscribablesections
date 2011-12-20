@@ -90,9 +90,6 @@ the site root. It will be Private by default, otherwise make it so. Note that
 the title and description will be exposed, to provide potential subscribers
 some information about what they're signing up for.
 
-    Change its title to "My Open Section" afterwards, or update the catalog
-    because of issue #1.
-
 After marking the Folder as a Subscribable Section in this manner, an extra tab
 "Subscriptions" appears (next to "Sharing"). Here you can view subscriptions
 and subscription requests for the Subscribable Section. 
@@ -157,16 +154,8 @@ saying the subscription was approved. You'll see the user has been moved from
 the "Requests" to the "Subscriptions" list. Looking at the "Sharing", you'll
 notice the user has been granted the Reader role.
 
-Issues
-======
-
-A list of issues per User Story:
-
-1. (User Story #2) p4a.subtyper doesn't re-index the object after it alters its
-   interfaces, so the list of Subscribable Section Folders in the portlet isn't
-   updated until someone changes the folders or updates the catalog.
-
 Authors
 =======
 
 Kees Hink
+Kim Chee Leong

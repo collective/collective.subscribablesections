@@ -7,6 +7,7 @@ Changelog
 - Use ZCatalog instead of portal_catalog.unrestrictedSearchResults, the
   ZCatalog is really unrestricted. [kcleong]
 - Improved and simplified retrieving of came form object in section view [kcleong]
+- Added an event subscriber so the folder is reindexed when subtyped with a section [kcleong]
 
 
 0.1 (2011-11-21)

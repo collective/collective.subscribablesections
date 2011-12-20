@@ -25,8 +25,7 @@ class SubscriptionsManager(object):
     def __init__(self, context):
         assert ISubscribableSection.providedBy(context) # XXX DEBUG
         self.context = context
-        self.portal_membership = getToolByName(self.context,
-                                                        'portal_membership')
+        self.portal_membership = getToolByName(self.context, 'portal_membership')
 
     def _subscribeMember(self, user_id):
         """Add the local role, and keep track of subscription also in our
