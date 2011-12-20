@@ -8,16 +8,16 @@
 
 <body>
 
-  <metal:body fill-slot="body"
+  <div metal:fill-slot="main"
       tal:define="
         show_border nothing;
         table_data view/table_data;
         form_results view/processForm;
         ">
 
-    <h1 class="documentFirstHeading">Manage subscriptions</h1>
+    <h1>Manage subscriptions</h1>
 
-    <tal:defineRequests 
+    <tal:defineRequests
         tal:define="
           items view/requests;
           table table_data/requests;
@@ -93,7 +93,7 @@
 
     </tal:defineSubscriptions>
 
-  </metal:body>
+  </div>
 
 </body>
 </html>

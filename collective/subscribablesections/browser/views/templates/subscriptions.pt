@@ -8,7 +8,7 @@
 
 <body>
 
-  <metal:body fill-slot="body"
+  <div metal:fill-slot="main"
       tal:define="
         show_border nothing;
         data view/data;
@@ -56,7 +56,7 @@
 
       </tal:defineSubscriptions>
 
-  </metal:body>
+  </div>
 
 </body>
 </html>
