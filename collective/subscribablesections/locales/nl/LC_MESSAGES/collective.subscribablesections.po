@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-12-12 12:49+0000\n"
+"POT-Creation-Date: 2011-12-21 12:08+0000\n"
 "PO-Revision-Date: 2011-12-12 13:48 +ZONE\n"
 "Last-Translator: Wietze Helmantel <helmantel@gw20e.com>\n"
 "Language-Team: nl <nl@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.subscribablesections\n"
 
-#: ./portlets/sections.py:27
+#: ./portlets/sections.py:28
 msgid "Add Subscribable Sections portlet"
 msgstr "Toevoegen abonneerbare secties portlet"
 
@@ -22,7 +22,7 @@ msgstr "Toevoegen abonneerbare secties portlet"
 msgid "Add Subscription Requests portlet"
 msgstr "Voeg abonneerbare secties portlet toe"
 
-#: ./portlets/sections.py:23
+#: ./portlets/sections.py:24
 msgid "Subscribable sections"
 msgstr "Abonneerbare secties"
 
@@ -30,7 +30,7 @@ msgstr "Abonneerbare secties"
 msgid "Subscription requests"
 msgstr "Verzoeken voor abonnementen"
 
-#: ./portlets/sections.py:28
+#: ./portlets/sections.py:29
 msgid "This portlet lists Subscribable Sections in the site."
 msgstr "Dit portlet toont de abonneerbare secties binnen de website"
 

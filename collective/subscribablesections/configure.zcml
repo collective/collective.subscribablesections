@@ -13,6 +13,7 @@
   <include package=".browser" />
   <include package=".portlets" />
   <include package="p4a.subtyper" />
+  <i18n:registerTranslations directory="locales" />
 
   <utility
       name="collective.subscribablesections.closed_section"
