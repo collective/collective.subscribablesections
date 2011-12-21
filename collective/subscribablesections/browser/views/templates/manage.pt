@@ -15,83 +15,86 @@
         form_results view/processForm;
         ">
 
-    <h1>Manage subscriptions</h1>
+    <h1 class="documentFirstHeading">Manage subscriptions</h1>
 
-    <tal:defineRequests
-        tal:define="
+    <div id="content-core">
+        <tal:defineRequests
+                tal:define="
           items view/requests;
           table table_data/requests;
           "
-        >
-      <h2>Subscription requests</h2>
+                >
+            <h2>Subscription requests</h2>
 
-      <form action="" method="POST" tal:condition="items">
+            <form action="" method="POST" tal:condition="items">
 
-        <metal:table define-macro="subscriptions_table">
+                <metal:table define-macro="subscriptions_table">
 
-          <table class="listing">
-            <tr>
-              <th>User</th>
-              <th tal:repeat="column table/columns"
-                  tal:content="column/name">[What to do]</th>
-            </tr>
-            <tr tal:repeat="item items"
-                tal:attributes="class python:repeat['item'].odd" >
-              <td>
-                <a tal:content="item/user_id"
-                    tal:attributes="href string:${portal_url}/@@user-information?userid=${item/user_id}"
-                    >[user]</a>
-              </td>
-              <td class="listingCheckbox"
-                  tal:repeat="column table/columns">
-                <input type="checkbox" 
-                    tal:attributes="
+                    <table class="listing">
+                        <tr>
+                            <th>User</th>
+                            <th tal:repeat="column table/columns"
+                                tal:content="column/name">[What to do]</th>
+                        </tr>
+                        <tr tal:repeat="item items"
+                            tal:attributes="class python:repeat['item'].odd" >
+                            <td>
+                                <a tal:content="item/user_id"
+                                   tal:attributes="href string:${portal_url}/@@user-information?userid=${item/user_id}"
+                                        >[user]</a>
+                            </td>
+                            <td class="listingCheckbox"
+                                tal:repeat="column table/columns">
+                                <input type="checkbox"
+                                       tal:attributes="
                       name string:users.id.${column/id}:list;
                       value item/user_id;
                       ">
-              </td>
-            </tr>
-          </table>
+                            </td>
+                        </tr>
+                    </table>
 
-        </metal:table>
+                </metal:table>
 
-        <input type="submit" 
-            tal:attributes="name table/button_name" 
-            value="Submit" />
-        <input type="reset" value="Reset form" />
+                <input type="submit"
+                       tal:attributes="name table/button_name"
+                       value="Submit" />
+                <input type="reset" value="Reset form" />
 
-      </form>
+            </form>
 
-      <p tal:condition="not: items">
-        No requests yet
-      </p>
+            <p tal:condition="not: items">
+                No requests yet
+            </p>
 
-    </tal:defineRequests>
+        </tal:defineRequests>
 
-    <tal:defineSubscriptions
-        tal:define="
+        <tal:defineSubscriptions
+                tal:define="
           items view/subscriptions;
           table table_data/subscriptions;
           "
-      >
-      <h2>Subscriptions</h2>
+                >
+            <h2>Subscriptions</h2>
 
-      <form action="" method="POST" tal:condition="items">
+            <form action="" method="POST" tal:condition="items">
 
-        <metal:useTable metal:use-macro="template/macros/subscriptions_table" />
+                <metal:useTable metal:use-macro="template/macros/subscriptions_table" />
 
-        <input type="submit" 
-            tal:attributes="name table/button_name" 
-            value="Remove" />
-        <input type="Reset" value="Reset form" />
+                <input type="submit"
+                       tal:attributes="name table/button_name"
+                       value="Remove" />
+                <input type="Reset" value="Reset form" />
 
-      </form>
+            </form>
 
-      <p tal:condition="not: items">
-        No subscriptions yet
-      </p>
+            <p tal:condition="not: items">
+                No subscriptions yet
+            </p>
 
-    </tal:defineSubscriptions>
+        </tal:defineSubscriptions>
+
+    </div>
 
   </div>
 
