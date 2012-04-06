@@ -17,12 +17,31 @@ class SubscribableSectionsView(BrowserView):
         self.came_from = self.request.get('came_from')
         self.relative_came_from = None
         self.came_from_obj = None
-
         if self.came_from:
-            relative_came_from = self.came_from.replace(
-                context.portal_url(), '').lstrip('/')
-            self.came_from_obj = self.context.unrestrictedTraverse(
-                relative_came_from)
+            relative_came_from = self.came_from.replace(context.portal_url(), '').lstrip('/')
+
+            ##When using apache2 or other webserver, you usually give a
+            ##VirtualHostBase, this means that stripping portal_url from the
+            ##came_from results in a 'not deep enough' relative part.
+            ##Since VirtualHostBase can be a map deeper in the plone site.
+            ##So if we got that in request, we incorporate it into the relative
+            ##path.
+            virtual_path = list(self.request.get('VirtualRootPhysicalPath', []))
+
+            if virtual_path:
+               ##The VirtualRootPhysicalPath goes all the way back to Zope.
+               ##We filter out any empty parts and the plone site.
+               ##Since we still have the plone site as context.
+               ##we're only interest in any folderish items below plone. 
+               virtual_path = [part for part in virtual_path \
+                                          if part and part !=\
+                                              self.context.id] ##self.context.id == Plone Site
+
+               ##Incorporate our virtual_path into the relative_came_from
+               virtual_path = "/".join(virtual_path)
+               relative_came_from = "%s/%s" % (virtual_path, relative_came_from)
+
+            self.came_from_obj = self.context.unrestrictedTraverse(relative_came_from)
 
 
     def check_came_from(self):
