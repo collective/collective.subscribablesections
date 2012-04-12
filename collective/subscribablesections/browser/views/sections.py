@@ -38,10 +38,16 @@ class SubscribableSectionsView(BrowserView):
                                               self.context.id] ##self.context.id == Plone Site
 
                ##Incorporate our virtual_path into the relative_came_from
-               virtual_path = "/".join(virtual_path)
-               relative_came_from = "%s/%s" % (virtual_path, relative_came_from)
+               if virtual_path:
+                   virtual_path = "/".join(virtual_path)
+                   relative_came_from = "%s/%s" % (virtual_path, relative_came_from)
 
-            self.came_from_obj = self.context.unrestrictedTraverse(relative_came_from)
+            try:
+                # the object might have been deleted in the mean time..
+                # e.g. in a @@moderate-delete-comment call
+                self.came_from_obj = self.context.unrestrictedTraverse(relative_came_from)
+            except:
+                self.came_from_obj = None
 
 
     def check_came_from(self):
