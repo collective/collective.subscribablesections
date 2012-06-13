@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0 (2012-06-13)
+----------------
+- Stable release
+
 0.2dvl (unreleased)
 -------------------
 - Changed template fill-slot definitions to a more saner one [kcleong]
