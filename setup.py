@@ -42,6 +42,9 @@ setup(name='collective.subscribablesections',
           # -*- Extra requirements: -*-
           'p4a.subtyper',
       ],
+      extras_require={
+        'test': ['plone.app.testing'],
+        },
       entry_points="""
       # -*- Entry points: -*-
 

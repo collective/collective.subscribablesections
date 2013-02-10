@@ -1,55 +1,31 @@
-import unittest
+# -*- coding: utf-8 -*-
 
-#from zope.testing import doctestunit
-#from zope.component import testing
-from Testing import ZopeTestCase as ztc
-
-from Products.Five import fiveconfigure
-from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import PloneSite
-ptc.setupPloneSite()
-
-import collective.subscribablesections
+from plone.app.testing import PloneSandboxLayer
+from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import IntegrationTesting
+from plone.app.testing import FunctionalTesting
 
 
-class TestCase(ptc.PloneTestCase):
+class Fixture(PloneSandboxLayer):
 
-    class layer(PloneSite):
+    defaultBases = (PLONE_FIXTURE,)
 
-        @classmethod
-        def setUp(cls):
-            fiveconfigure.debug_mode = True
-            ztc.installPackage(collective.subscribablesections)
-            fiveconfigure.debug_mode = False
+    def setUpZope(self, app, configurationContext):
+        # Load ZCML
+        import collective.subscribablesections
+        self.loadZCML(package=collective.subscribablesections)
 
-        @classmethod
-        def tearDown(cls):
-            pass
-
-
-def test_suite():
-    return unittest.TestSuite([
-
-        # Unit tests
-        #doctestunit.DocFileSuite(
-        #    'README.txt', package='collective.subscribablesections',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-        #doctestunit.DocTestSuite(
-        #    module='collective.subscribablesections.mymodule',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
+    def setUpPloneSite(self, portal):
+        # Install into Plone site using portal_setup
+        self.applyProfile(portal, 'collective.subscribablesections:default')
 
 
-        # Integration tests that use PloneTestCase
-        #ztc.ZopeDocFileSuite(
-        #    'README.txt', package='collective.subscribablesections',
-        #    test_class=TestCase),
-
-        #ztc.FunctionalDocFileSuite(
-        #    'browser.txt', package='collective.subscribablesections',
-        #    test_class=TestCase),
-
-        ])
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+FIXTURE = Fixture()
+INTEGRATION_TESTING = IntegrationTesting(
+    bases=(FIXTURE,),
+    name='collective.subscribablesections:Integration',
+    )
+FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(FIXTURE,),
+    name='collective.subscribablesections:Functional',
+    )
