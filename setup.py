@@ -2,14 +2,15 @@ from setuptools import setup, find_packages
 import os
 
 version = '1.0'
+long_description = open("README.txt").read() + "\n" + \
+                   open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "LICENSE.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "HISTORY.txt")).read(),
 
 setup(name='collective.subscribablesections',
       version=version,
       description="Allow Members to request access to private Plone Folders.",
-      long_description = open("README.txt").read() + "\n" + \
-                   open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
-                   open(os.path.join("docs", "LICENSE.txt")).read() + "\n" + \
-                   open(os.path.join("docs", "HISTORY.txt")).read()
+      long_description=long_description,
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
