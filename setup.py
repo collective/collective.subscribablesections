@@ -6,13 +6,26 @@ version = '1.0'
 setup(name='collective.subscribablesections',
       version=version,
       description="Allow Members to request access to private Plone Folders.",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description = open("README.txt").read() + "\n" + \
+                   open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "LICENSE.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "HISTORY.txt")).read()
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Environment :: Web Environment",
         "Framework :: Plone",
+        "Framework :: Plone :: 4.2",
+#        "Framework :: Plone :: 4.3",
+        "Intended Audience :: End Users/Desktop",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
+        "Operating System :: OS Independent",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
+        "Topic :: Office/Business :: Groupware",
+        "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='Plone',
       author='Kees Hink',
