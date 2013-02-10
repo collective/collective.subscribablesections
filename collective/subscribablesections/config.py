@@ -1,5 +1,7 @@
 from collective.subscribablesections import MessageFactory as _
 
+PROJECTNAME = 'collective.subscribablesections'
+
 REQUESTS_KEY = "collective.subscribablesections.requests"
 SUBSCRIPTIONS_KEY = "collective.subscribablesections.subscriptions"
 
