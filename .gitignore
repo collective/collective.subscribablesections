@@ -3,6 +3,7 @@
 *.pyo
 *.tmp*
 *.mo
+*.log
 *.egg
 *.EGG
 *.egg-info
@@ -20,6 +21,7 @@
 .pydevproject
 bin/
 build/
+coverage/
 develop-eggs/
 downloads/
 eggs/
