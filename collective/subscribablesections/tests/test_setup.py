@@ -25,3 +25,16 @@ class InstallTestCase(unittest.TestCase):
     def test_dependencies_installed(self):
         self.assertTrue(self.qi.isProductInstalled('p4a.subtyper'))
 
+class UninstallTest(unittest.TestCase):
+
+    layer = INTEGRATION_TESTING
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.qi = getattr(self.portal, 'portal_quickinstaller')
+        self.qi.uninstallProducts(products=[PROJECTNAME])
+
+    def test_uninstalled(self):
+        self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
+        

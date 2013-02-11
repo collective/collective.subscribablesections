@@ -35,5 +35,12 @@
       description="Allow Members to request access to private Plone Folders"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Subscribable Sections uninstall"
+      directory="profiles/uninstall"
+      description="Uninstall profile for the Subscribable Sections package."
+      provides="Products.GenericSetup.interfaces.EXTENSION" />
   
 </configure>
