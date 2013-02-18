@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.subscribablesections\n"
+"POT-Creation-Date: 2013-02-17 23:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Wietze Helmantel <helmantel@gw20e.com>\n"
+"Language-Team: en <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+#: ./profiles/default/actions.xml
+msgid "Manage subscriptions"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Subscriptions"
+msgstr ""
+
+#. Default: "A portlet which lists the subscription requests in the site."
+#: ./profiles/default/portlets.xml
+msgid "description_requests_portlet"
+msgstr ""
+
+#. Default: "A portlet which lists the subscribable sections in the site."
+#: ./profiles/default/portlets.xml
+msgid "description_sections_portlet"
+msgstr ""
+
+#. Default: "Subscription requests"
+#: ./profiles/default/portlets.xml
+msgid "title_requests_portlet"
+msgstr ""
+
+#. Default: "Subscribable Sections"
+#: ./profiles/default/portlets.xml
+msgid "title_sections_portlet"
+msgstr ""
+
