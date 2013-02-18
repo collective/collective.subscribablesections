@@ -2,20 +2,19 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       tal:omit-tag="">
+
 <dl class="portlet portletSubscribableSections"
     i18n:domain="collective.subscribablesections">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <span tal:content="view/title">[Portlet title]</span>
+        <span tal:content="view/title"><tal:comment replace="nothing">[Portlet title]</tal:comment></span>
         <span class="portletTopRight"></span>
     </dt>
 
     <tal:items tal:repeat="section view/sections"
-        tal:define="
-           plone_view context/@@plone;
-           toLocalizedTime nocall:plone_view/toLocalizedTime;
-          ">
+        tal:define="plone_view context/@@plone;
+                    toLocalizedTime nocall:plone_view/toLocalizedTime;">
 
       <dd class="portletItem"
           tal:define="oddrow repeat/section/odd"
@@ -25,11 +24,11 @@
               title section/Description;
               ">
           <tal:title content="section/pretty_title_or_id">
-            Title
+            <tal:comment replace="nothing">Title</tal:comment>
           </tal:title>
           <span class="portletItemDetails"
-                tal:content="python:toLocalizedTime(section.ModificationDate)"
-                >May 5</span>
+                tal:content="python:toLocalizedTime(section.ModificationDate)">
+                <tal:comment replace="nothing">May 5</tal:comment></span>
         </a>
       </dd>
     </tal:items>

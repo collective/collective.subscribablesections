@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="collective.subscribablesections">
 
 <body>
 
@@ -31,14 +31,16 @@
     </div>
     
     <div tal:omit-tag="" tal:condition="subscription_required">
-      <tal:defineInfo tal:define="
-          title view/title;
-          description view/description;
-          ">
-        <h1 class="documentFirstHeading" tal:content="view/title">[Title]</h1>
+      <tal:defineInfo tal:define="title view/title;
+                                  description view/description;">
+
+        <h1 class="documentFirstHeading" tal:content="view/title"><tal:comment replace="nothing">[Title]</tal:comment></h1>
         <div class="documentDescription" tal:content="view/description">
-          [Description]
+          <tal:comment replace="nothing">[Description]</tal:comment>
         </div>
+
+        <br />
+
         <h2 i18n:translate="heading_subscription_required">
           Subscription required
         </h2>

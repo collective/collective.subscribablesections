@@ -32,7 +32,7 @@
       name="default"
       title="Subscribable Sections"
       directory="profiles/default"
-      description="Allow Members to request access to private Plone Folders"
+      description="Allow Members to request access to private Plone Folders."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

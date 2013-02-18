@@ -1,6 +1,7 @@
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.Five import BrowserView
 
+from collective.subscribablesections import MessageFactory as _
 from collective.subscribablesections import addStatus
 from collective.subscribablesections.config import \
     MESSAGE_MANAGEMENT_FORM_SUCCESS
@@ -29,16 +30,16 @@ class ManageSubscriptions(BrowserView):
                 'button_name': 'form.button.requests', 
                 'columns': [
                     {   'id': 'approve', 
-                        'name': 'Approve request'}, 
+                        'name': _(u'Approve request')},
                     {   'id': 'remove', 
-                        'name': 'Remove request'},
+                        'name': _(u'Remove request')},
                     ],
                 },
             'subscriptions': {
                 'button_name': 'form.button.subscriptions', 
                 'columns': [
                     {   'id': 'remove', 
-                        'name': 'Remove subscription'},
+                        'name': _(u'Remove subscription')},
                 ],
             },
         }

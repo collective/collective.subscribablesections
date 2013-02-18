@@ -2,32 +2,31 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       tal:omit-tag="">
+
 <dl class="portlet portletSubscriptionRequests"
     i18n:domain="collective.subscribablesections">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <span tal:content="view/title">[Portlet title]</span>
+        <span tal:content="view/title"><tal:comment replace="nothing">[Portlet title]</tal:comment></span>
         <span class="portletTopRight"></span>
     </dt>
 
     <tal:items tal:repeat="request view/requests"
-        tal:define="
-           plone_view context/@@plone;
-           toLocalizedTime nocall:plone_view/toLocalizedTime;
-          ">
+        tal:define="plone_view context/@@plone;
+                    toLocalizedTime nocall:plone_view/toLocalizedTime;">
 
       <dd class="portletItem"
           tal:define="oddrow repeat/request/odd"
           tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <a tal:attributes="href string:${request/url}/@@manage-subscriptions">
           <tal:title content="request/user_id">
-            [Username]
+            <tal:comment replace="nothing">[Username]</tal:comment>
           </tal:title>
-          <span tal:content="request/title">[section title]</span>
+          <span tal:content="request/title"><tal:comment replace="nothing">[section title]</tal:comment></span>
           <span class="portletItemDetails"
-                tal:content="python:toLocalizedTime(request['date'])"
-                >May 5</span>
+                tal:content="python:toLocalizedTime(request['date'])">
+                <tal:comment replace="nothing">May 5</tal:comment></span>
         </a>
       </dd>
     </tal:items>

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-12-21 12:08+0000\n"
+"POT-Creation-Date: 2013-02-17 23:51+0000\n"
 "PO-Revision-Date: 2011-12-12 13:48 +ZONE\n"
 "Last-Translator: Wietze Helmantel <helmantel@gw20e.com>\n"
 "Language-Team: nl <nl@li.org>\n"
@@ -22,13 +22,103 @@ msgstr "Toevoegen abonneerbare secties portlet"
 msgid "Add Subscription Requests portlet"
 msgstr "Voeg abonneerbare secties portlet toe"
 
+#. Default: "Allow Members to request access to private Plone Folders"
+#: ./configure.zcml
+msgid "Allow Members to request access to private Plone Folders."
+msgstr ""
+
+#: ./browser/views/manage.py:33
+msgid "Approve request"
+msgstr ""
+
+#: ./subtypes.py:14
+msgid "Closed Section"
+msgstr ""
+
+#: ./subtypes.py:15
+msgid "Folder for which approved subscription is required to view it"
+msgstr ""
+
+#: ./subtypes.py:20
+msgid "Folder for which subscription is required to view it, where subscription is given immediately upon request"
+msgstr ""
+
+#. Default: "Insufficient privileges"
+#: ./skins/subscribable_sections/insufficient_privileges.pt.metadata
+msgid "Insufficient privileges"
+msgstr ""
+
+#: ./browser/views/templates/manage.pt:18
+msgid "Manage subscriptions"
+msgstr ""
+
+#: ./browser/views/templates/subscriptions.pt:15
+msgid "My subscriptions"
+msgstr ""
+
+#: ./browser/views/templates/manage.pt:62
+msgid "No requests yet"
+msgstr ""
+
+#: ./browser/views/templates/manage.pt:85
+msgid "No subscriptions yet"
+msgstr ""
+
+#: ./subtypes.py:19
+msgid "Open Section"
+msgstr ""
+
+#: ./browser/views/templates/manage.pt:78
+msgid "Remove"
+msgstr ""
+
+#: ./browser/views/manage.py:35
+msgid "Remove request"
+msgstr ""
+
+#: ./browser/views/manage.py:42
+msgid "Remove subscription"
+msgstr ""
+
+#: ./browser/views/templates/subscriptions.pt:19
+msgid "Requests"
+msgstr ""
+
+#: ./browser/views/templates/manage.pt:58
+msgid "Reset form"
+msgstr ""
+
+#: ./browser/views/templates/manage.pt:55
+msgid "Submit"
+msgstr ""
+
+#. Default: "Subscribable Sections"
+#: ./configure.zcml
+msgid "Subscribable Sections"
+msgstr ""
+
+#. Default: "Subscribable Sections uninstall"
+#: ./configure.zcml
+msgid "Subscribable Sections uninstall"
+msgstr ""
+
 #: ./portlets/sections.py:24
 msgid "Subscribable sections"
 msgstr "Abonneerbare secties"
 
+#: ./browser/views/templates/manage.pt:25
 #: ./portlets/requests.py:25
 msgid "Subscription requests"
 msgstr "Verzoeken voor abonnementen"
+
+#: ./browser/views/templates/manage.pt:72
+#: ./browser/views/templates/subscriptions.pt:39
+msgid "Subscriptions"
+msgstr ""
+
+#: ./browser/views/templates/subscriptions.pt:17
+msgid "The following is a list of subscriptions and pending subscription requests."
+msgstr ""
 
 #: ./portlets/sections.py:29
 msgid "This portlet lists Subscribable Sections in the site."
@@ -38,63 +128,90 @@ msgstr "Dit portlet toont de abonneerbare secties binnen de website"
 msgid "This portlet lists all requested subscriptions in the site."
 msgstr "Dit portlet toont alle verzoeken voor abonnementen in de website"
 
-#. Default: "A portlet which lists the subscription requests in the site."
-#: ./profiles/default/portlets.xml
-msgid "description_requests_portlet"
+#. Default: "Uninstall profile for the Subscribable Sections package."
+#: ./configure.zcml
+msgid "Uninstall profile for the Subscribable Sections package."
 msgstr ""
 
-#. Default: "A portlet which lists the subscribable sections in the site."
-#: ./profiles/default/portlets.xml
-msgid "description_sections_portlet"
+#: ./browser/views/templates/manage.pt:33
+msgid "User"
+msgstr ""
+
+#: ./browser/views/templates/subscriptions.pt:22
+msgid "You have no pending subscription requests."
+msgstr ""
+
+#: ./browser/views/templates/subscriptions.pt:43
+msgid "You're not subscribed to any Section."
+msgstr ""
+
+#. Default: "You do not have sufficient privileges to view this page. If you believe you are receiving this message in error, contact the ${site_admin}."
+#: ./skins/subscribable_sections/insufficient_privileges.pt:27
+msgid "description_no_privileges_for_page"
+msgstr ""
+
+#. Default: "This section requires that you subscribe in order to watch its contents. ${request_subscription}"
+#: ./skins/subscribable_sections/insufficient_privileges.pt:51
+msgid "description_subscription_required"
+msgstr ""
+
+#. Default: "Insufficient Privileges"
+#: ./skins/subscribable_sections/insufficient_privileges.pt:21
+msgid "heading_no_privileges"
+msgstr ""
+
+#. Default: "Subscription required"
+#: ./skins/subscribable_sections/insufficient_privileges.pt:44
+msgid "heading_subscription_required"
+msgstr ""
+
+#. Default: "Request subscription"
+#: ./skins/subscribable_sections/insufficient_privileges.pt:52
+msgid "label_request_subscription"
+msgstr ""
+
+#. Default: "site administration"
+#: ./skins/subscribable_sections/insufficient_privileges.pt:27
+msgid "label_site_administration"
 msgstr ""
 
 #. Default: "View my subscriptions"
-#: ./portlets/sections.pt:38
+#: ./portlets/sections.pt:37
 msgid "link_my_subscriptions"
 msgstr ""
 
 #. Default: "Form updated."
-#: ./config.py:25
+#: ./config.py:27
 msgid "management_form_success"
 msgstr ""
 
 #. Default: "Your subscription request was added."
-#: ./config.py:11
+#: ./config.py:13
 msgid "request_added"
 msgstr ""
 
 #. Default: "Subscription request exists for this user."
-#: ./config.py:7
+#: ./config.py:9
 msgid "request_exists"
 msgstr ""
 
 #. Default: "Request removed."
-#: ./config.py:29
+#: ./config.py:31
 msgid "request_removed"
 msgstr ""
 
 #. Default: "Subscription was granted."
-#: ./config.py:21
+#: ./config.py:23
 msgid "subscription_granted"
 msgstr "Verzoek voor abonnement toegewezen"
 
 #. Default: "Subscription removed."
-#: ./config.py:33
+#: ./config.py:35
 msgid "subscription_removed"
 msgstr "Abonnement verwijderd"
 
 #. Default: "You're subscribed."
-#: ./config.py:16
+#: ./config.py:18
 msgid "subscription_success"
-msgstr ""
-
-#. Default: "Subscription requests"
-#: ./profiles/default/portlets.xml
-msgid "title_requests_portlet"
-msgstr ""
-
-#. Default: "Subscribable Sections"
-#: ./profiles/default/portlets.xml
-msgid "title_sections_portlet"
 msgstr ""
 

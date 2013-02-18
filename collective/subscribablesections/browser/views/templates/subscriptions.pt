@@ -4,31 +4,31 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="collective.subscribablesections">
 
 <body>
 
   <div metal:fill-slot="main"
-      tal:define="
-        show_border nothing;
-        data view/data;
-        "
-      >
+      tal:define="show_border nothing;
+                  data view/data;">
 
-    <h1 class="documentFirstHeading">My subscriptions</h1>
+    <h1 class="documentFirstHeading" i18n:translate="">My subscriptions</h1>
 
-      <h2>Requests</h2>
+      <p i18n:translate="">The following is a list of subscriptions and pending subscription requests.</p>
+
+      <h2 i18n:translate="">Requests</h2>
 
       <tal:defineRequests tal:define="requests data/requests | nothing">
-        <p tal:condition="not: requests">
+        <p tal:condition="not: requests" i18n:translate="">
           You have no pending subscription requests.
         </p>
 
         <tal:ifRequests tal:condition="requests" tal:omit-tag="">
           <p tal:repeat="request requests">
             <a tal:attributes="href request/url"
-                tal:content="request/title"
-                >[Title]</a>
+                tal:content="request/title">
+                <tal:comment replace="nothing">[Title]</tal:comment>
+            </a>
             <span class="description" tal:content="request/description" />
             <br />
           </p>
@@ -36,19 +36,20 @@
 
       </tal:defineRequests>
 
-      <h2>Subscriptions</h2>
+      <h2 i18n:translate="">Subscriptions</h2>
 
       <tal:defineSubscriptions tal:define="subscriptions data/subscriptions | nothing">
 
-        <p tal:condition="not: subscriptions">
+        <p tal:condition="not: subscriptions" i18n:translate="">
           You're not subscribed to any Section.
         </p>
 
         <tal:ifSubscriptions tal:condition="subscriptions" tal:omit-tag="">
           <p tal:repeat="subscription subscriptions">
             <a tal:attributes="href subscription/url"
-                tal:content="subscription/title"
-                >[Title]</a>
+                tal:content="subscription/title">
+                <tal:comment replace="nothing">[Title]</tal:comment>
+            </a>
             <span class="description" tal:content="subscription/description" />
             <br />
           </p>
@@ -60,4 +61,3 @@
 
 </body>
 </html>
-

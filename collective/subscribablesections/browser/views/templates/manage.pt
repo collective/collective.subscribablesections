@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="collective.subscribablesections">
 
 <body>
 
@@ -15,16 +15,14 @@
         form_results view/processForm;
         ">
 
-    <h1 class="documentFirstHeading">Manage subscriptions</h1>
+    <h1 class="documentFirstHeading" i18n:translate="">Manage subscriptions</h1>
 
     <div id="content-core">
         <tal:defineRequests
-                tal:define="
-          items view/requests;
-          table table_data/requests;
-          "
-                >
-            <h2>Subscription requests</h2>
+                tal:define="items view/requests;
+                            table table_data/requests;">
+
+            <h2 i18n:translate="">Subscription requests</h2>
 
             <form action="" method="POST" tal:condition="items">
 
@@ -32,24 +30,22 @@
 
                     <table class="listing">
                         <tr>
-                            <th>User</th>
+                            <th i18n:translate="">User</th>
                             <th tal:repeat="column table/columns"
-                                tal:content="column/name">[What to do]</th>
+                                tal:content="column/name"><tal:comment replace="nothing">[What to do]</tal:comment></th>
                         </tr>
                         <tr tal:repeat="item items"
                             tal:attributes="class python:repeat['item'].odd" >
                             <td>
                                 <a tal:content="item/user_id"
-                                   tal:attributes="href string:${portal_url}/@@user-information?userid=${item/user_id}"
-                                        >[user]</a>
+                                   tal:attributes="href string:${portal_url}/@@user-information?userid=${item/user_id}">
+                                        <tal:comment replace="nothing">[user]</tal:comment></a>
                             </td>
                             <td class="listingCheckbox"
                                 tal:repeat="column table/columns">
                                 <input type="checkbox"
-                                       tal:attributes="
-                      name string:users.id.${column/id}:list;
-                      value item/user_id;
-                      ">
+                                       tal:attributes="name string:users.id.${column/id}:list;
+                                                       value item/user_id;" />
                             </td>
                         </tr>
                     </table>
@@ -58,24 +54,22 @@
 
                 <input type="submit"
                        tal:attributes="name table/button_name"
-                       value="Submit" />
-                <input type="reset" value="Reset form" />
+                       value="Submit" i18n:attributes="value" />
+                <input type="reset" value="Reset form" i18n:attributes="value" />
 
             </form>
 
-            <p tal:condition="not: items">
+            <p tal:condition="not: items" i18n:translate="">
                 No requests yet
             </p>
 
         </tal:defineRequests>
 
         <tal:defineSubscriptions
-                tal:define="
-          items view/subscriptions;
-          table table_data/subscriptions;
-          "
-                >
-            <h2>Subscriptions</h2>
+                tal:define="items view/subscriptions;
+                            table table_data/subscriptions;">
+
+            <h2 i18n:translate="">Subscriptions</h2>
 
             <form action="" method="POST" tal:condition="items">
 
@@ -83,12 +77,12 @@
 
                 <input type="submit"
                        tal:attributes="name table/button_name"
-                       value="Remove" />
-                <input type="Reset" value="Reset form" />
+                       value="Remove" i18n:attributes="value" />
+                <input type="Reset" value="Reset form" i18n:attributes="value" />
 
             </form>
 
-            <p tal:condition="not: items">
+            <p tal:condition="not: items" i18n:translate="">
                 No subscriptions yet
             </p>
 
@@ -100,4 +94,3 @@
 
 </body>
 </html>
-

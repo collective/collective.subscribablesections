@@ -3,6 +3,7 @@ from zope.interface import implements
 
 from p4a.subtyper.interfaces import IPortalTypedFolderishDescriptor
 
+from collective.subscribablesections import MessageFactory as _
 from interfaces import IClosedSection, IOpenSection
 
 class BaseSectionDescriptor(object):
@@ -10,11 +11,11 @@ class BaseSectionDescriptor(object):
     for_portal_type = 'Folder'
     
 class ClosedSectionDescriptor(BaseSectionDescriptor):
-    title = u'Closed Section'
-    description = u'Folder for which approved subscription is required to view it'
+    title = _(u'Closed Section')
+    description = _(u'Folder for which approved subscription is required to view it')
     type_interface = IClosedSection
 
 class OpenSectionDescriptor(BaseSectionDescriptor):
-    title = u'Open Section'
-    description = u'Folder for which subscription is required to view it, where subscription is given immediately upon request'
+    title = _(u'Open Section')
+    description = _(u'Folder for which subscription is required to view it, where subscription is given immediately upon request')
     type_interface = IOpenSection

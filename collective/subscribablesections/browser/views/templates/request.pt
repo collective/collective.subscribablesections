@@ -18,7 +18,7 @@
 
 <metal:main fill-slot="content">
 
-      I'd like a subscription, please.
+      <tal:comment replace="nothing">I'd like a subscription, please.</tal:comment>
 
 </metal:main>
 
