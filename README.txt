@@ -154,8 +154,20 @@ saying the subscription was approved. You'll see the user has been moved from
 the "Requests" to the "Subscriptions" list. Looking at the "Sharing", you'll
 notice the user has been granted the Reader role.
 
+
+Continuous integration testing
+==============================
+
+.. image:: https://secure.travis-ci.org/collective/collective.subscribablesections.png
+    :target: http://travis-ci.org/collective/collective.subscribablesections
+
+Have an idea? Found a bug? Let us know by `opening a support ticket`_.
+
 Authors
 =======
 
 Kees Hink
 Kim Chee Leong
+
+
+.. _`opening a support ticket`: https://github.com/collective/collective.subscribablesections/issues
