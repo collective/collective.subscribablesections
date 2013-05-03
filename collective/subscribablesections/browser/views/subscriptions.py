@@ -1,4 +1,8 @@
-from zope.app.component.hooks import getSite
+try:
+    from zope.component.hooks import getSite
+except ImportError:
+    # BBB for Plone < 4
+    from zope.app.component.hooks import getSite
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView

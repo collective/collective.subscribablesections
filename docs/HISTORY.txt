@@ -4,6 +4,7 @@ Changelog
 1.1 (unreleased)
 ----------------
 
+- Fix getSite import error on Plone 4.3 [toutpt]
 - added development buildout configurations [macagua]
 - added support for Travis CI service [macagua]
 - added support for plone.app.testing [macagua]
