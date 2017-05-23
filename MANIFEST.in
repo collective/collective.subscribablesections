@@ -1,0 +1,16 @@
+include *.py
+include *.txt
+include buildout.cfg
+include test-4.2.x.cfg
+include test-4.3.x.cfg
+include travis.cfg
+recursive-include collective *.metadata
+recursive-include collective *.po
+recursive-include collective *.pot
+recursive-include collective *.pt
+recursive-include collective *.sh
+recursive-include collective *.txt
+recursive-include collective *.xml
+recursive-include collective *.zcml
+recursive-include docs *.GPL
+recursive-include docs *.txt
